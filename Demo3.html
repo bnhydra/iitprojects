@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flood Forecasting | IIT Madras</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+<style>
+:root{
+  --green:#2d6a4f;--green2:#40916c;--green3:#74c69d;
+  --sand:#f8f3e8;--sand2:#ede0c8;--brown:#5c3d2e;
+  --text:#1b2d1f;--text-dim:#6b7c6e;--white:#fff;
+  --pad:5rem 0;
+}
+html{scroll-behavior:smooth;font-size:15px;}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--white);color:var(--text);}
+
+/* NAVBAR */
+#mainNav{background:var(--white)!important;border-bottom:2px solid var(--sand2);padding:.6rem 1rem;transition:box-shadow .3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(45,106,79,.15);}
+#mainNav .navbar-brand{color:var(--green)!important;font-weight:700;font-size:1.1rem;font-family:'Segoe UI',sans-serif;}
+#mainNav .nav-link{color:var(--text-dim)!important;font-size:.82rem;font-weight:600;font-family:'Segoe UI',sans-serif;padding:.4rem .65rem!important;border-radius:4px;transition:color .2s;}
+#mainNav .nav-link:hover,#mainNav .nav-link.active{color:var(--green)!important;}
+#mainNav .navbar-toggler{border-color:var(--green3);}
+
+/* SHARED */
+.section-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;position:relative;padding-bottom:.6rem;margin-bottom:2rem;color:var(--green);}
+.section-title::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;background:var(--green3);border-radius:2px;}
+.section-title.centered::after{left:50%;transform:translateX(-50%);}
+
+/* LAZY + REVEAL */
+img.lazy{background:linear-gradient(90deg,#e8f0eb 25%,#f4f8f5 50%,#e8f0eb 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;min-height:60px;display:block;width:100%;}
+img.lazy.loaded{background:none;animation:none;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:767px){:root{--pad:3rem 0;}}
+@media(min-width:768px){html{font-size:16px;}}
+</style>
+</head>
+<body>
+
+<nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand" href="#hero">&#127754; Flood Forecasting</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
+        <li class="nav-item"><a class="nav-link" href="#rtff">RTFF &amp; RTDAS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#rht">HydroTwin</a></li>
+        <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reservoir">Reservoirs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#suds">SuDS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#climate">Climate</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main>
