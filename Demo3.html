@@ -63,3 +63,42 @@ img.lazy.loaded{background:none;animation:none;}
   </div>
 </nav>
 <main>
+
+<style>
+/* HERO */
+#hero{position:relative;min-height:100vh;background:var(--sand);display:flex;align-items:center;overflow:hidden;}
+#hero .hero-bg-img{position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;display:block;}
+#hero .hero-bg-img-overlay{position:absolute;right:0;top:0;width:55%;height:100%;background:linear-gradient(to right,var(--sand) 0%,transparent 40%);}
+#hero .hero-content{position:relative;z-index:2;}
+#hero .hero-subtitle{font-size:.9rem;color:var(--green2);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-family:'Segoe UI',sans-serif;margin-bottom:1rem;}
+#hero .hero-title{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.05;color:var(--brown);font-family:Georgia,serif;}
+#hero .hero-title em{color:var(--green);font-style:normal;}
+#hero .hero-advisor{font-size:1rem;color:var(--text);margin-bottom:.4rem;margin-top:1.4rem;font-family:'Segoe UI',sans-serif;}
+#hero .hero-team{font-size:.88rem;color:var(--text-dim);max-width:560px;font-family:'Segoe UI',sans-serif;line-height:1.7;}
+#hero .btn-hero{display:inline-block;margin-top:1.8rem;padding:.75rem 2.2rem;background:var(--green);color:#fff;border-radius:40px;font-weight:700;font-size:.95rem;text-decoration:none;font-family:'Segoe UI',sans-serif;transition:background .25s,transform .2s;}
+#hero .btn-hero:hover{background:var(--green2);transform:translateY(-2px);}
+#hero .hero-logo{max-height:80px;position:relative;z-index:2;}
+/* leaf deco */
+#hero .leaf-deco{position:absolute;bottom:-20px;left:-30px;font-size:8rem;opacity:.06;transform:rotate(-20deg);pointer-events:none;z-index:1;}
+</style>
+
+<!-- HERO -->
+<section id="hero">
+  <img src="images/image1.jpg" alt="" class="hero-bg-img" fetchpriority="high"/>
+  <div class="hero-bg-img-overlay"></div>
+  <span class="leaf-deco">&#127807;</span>
+  <div class="container hero-content py-5">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-7 col-md-10">
+        <p class="hero-subtitle">&#128167; IIT Madras &mdash; 2026</p>
+        <h1 class="hero-title">Flood<br><em>Forecasting</em></h1>
+        <p class="hero-advisor"><strong>Advisor:</strong> Prof. Balaji Narasimhan</p>
+        <p class="hero-team">Elanchezhian &bull; Kirthiga SM &bull; Santhosh Kumar S &bull; Krushil &bull; Swarnadeep &bull; Arun RS &bull; Balaji L &bull; Bavithra &bull; Mukesh</p>
+        <a href="#background" class="btn-hero">Explore Research &#8595;</a>
+      </div>
+      <div class="col-lg-5 text-end d-none d-lg-flex align-items-end justify-content-end" style="min-height:100vh;padding-bottom:3rem;">
+        <img src="images/image3.png" alt="IIT Madras Logo" class="hero-logo"/>
+      </div>
+    </div>
+  </div>
+</section>
