@@ -7,29 +7,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
 <style>
 :root{
-  --green:#2d6a4f;--green2:#40916c;--green3:#74c69d;
-  --sand:#f8f3e8;--sand2:#ede0c8;--brown:#5c3d2e;
-  --text:#1b2d1f;--text-dim:#6b7c6e;--white:#fff;
+  --charcoal:#1c1c1e;--charcoal2:#2c2c2e;--charcoal3:#3a3a3c;
+  --teal:#00897b;--teal2:#26a69a;--teal3:#b2dfdb;
+  --orange:#f4511e;--orange2:#ff7043;
+  --cream:#fafaf8;--text:#1c1c1e;--text-dim:#636366;
   --pad:5rem 0;
 }
 html{scroll-behavior:smooth;font-size:15px;}
-body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--white);color:var(--text);}
+body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:var(--cream);color:var(--text);}
 
 /* NAVBAR */
-#mainNav{background:var(--white)!important;border-bottom:2px solid var(--sand2);padding:.6rem 1rem;transition:box-shadow .3s;}
-#mainNav.scrolled{box-shadow:0 2px 16px rgba(45,106,79,.15);}
-#mainNav .navbar-brand{color:var(--green)!important;font-weight:700;font-size:1.1rem;font-family:'Segoe UI',sans-serif;}
-#mainNav .nav-link{color:var(--text-dim)!important;font-size:.82rem;font-weight:600;font-family:'Segoe UI',sans-serif;padding:.4rem .65rem!important;border-radius:4px;transition:color .2s;}
-#mainNav .nav-link:hover,#mainNav .nav-link.active{color:var(--green)!important;}
-#mainNav .navbar-toggler{border-color:var(--green3);}
+#mainNav{background:var(--charcoal)!important;padding:.55rem 1rem;transition:box-shadow .3s;}
+#mainNav.scrolled{box-shadow:0 3px 20px rgba(0,0,0,.4);}
+#mainNav .navbar-brand{color:#fff!important;font-weight:900;font-size:1.1rem;letter-spacing:-.3px;text-transform:uppercase;}
+#mainNav .nav-link{color:rgba(255,255,255,.7)!important;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:.4rem .65rem!important;transition:color .2s;}
+#mainNav .nav-link:hover,#mainNav .nav-link.active{color:var(--teal2)!important;}
+#mainNav .navbar-toggler{border-color:rgba(255,255,255,.3);}
+#mainNav .navbar-toggler-icon{filter:invert(1);}
 
 /* SHARED */
-.section-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;position:relative;padding-bottom:.6rem;margin-bottom:2rem;color:var(--green);}
-.section-title::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;background:var(--green3);border-radius:2px;}
+.section-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;position:relative;padding-bottom:.6rem;margin-bottom:2rem;text-transform:uppercase;letter-spacing:-.5px;}
+.section-title::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:4px;background:var(--orange);border-radius:0;}
 .section-title.centered::after{left:50%;transform:translateX(-50%);}
 
 /* LAZY + REVEAL */
-img.lazy{background:linear-gradient(90deg,#e8f0eb 25%,#f4f8f5 50%,#e8f0eb 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;min-height:60px;display:block;width:100%;}
+img.lazy{background:linear-gradient(90deg,#e8e8e8 25%,#f5f5f5 50%,#e8e8e8 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;min-height:60px;display:block;width:100%;}
 img.lazy.loaded{background:none;animation:none;}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
@@ -66,58 +68,56 @@ img.lazy.loaded{background:none;animation:none;}
 
 <style>
 /* HERO */
-#hero{position:relative;min-height:100vh;background:var(--sand);display:flex;align-items:center;overflow:hidden;}
-#hero .hero-bg-img{position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;display:block;}
-#hero .hero-bg-img-overlay{position:absolute;right:0;top:0;width:55%;height:100%;background:linear-gradient(to right,var(--sand) 0%,transparent 40%);}
-#hero .hero-content{position:relative;z-index:2;}
-#hero .hero-subtitle{font-size:.9rem;color:var(--green2);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-family:'Segoe UI',sans-serif;margin-bottom:1rem;}
-#hero .hero-title{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.05;color:var(--brown);font-family:Georgia,serif;}
-#hero .hero-title em{color:var(--green);font-style:normal;}
-#hero .hero-advisor{font-size:1rem;color:var(--text);margin-bottom:.4rem;margin-top:1.4rem;font-family:'Segoe UI',sans-serif;}
-#hero .hero-team{font-size:.88rem;color:var(--text-dim);max-width:560px;font-family:'Segoe UI',sans-serif;line-height:1.7;}
-#hero .btn-hero{display:inline-block;margin-top:1.8rem;padding:.75rem 2.2rem;background:var(--green);color:#fff;border-radius:40px;font-weight:700;font-size:.95rem;text-decoration:none;font-family:'Segoe UI',sans-serif;transition:background .25s,transform .2s;}
-#hero .btn-hero:hover{background:var(--green2);transform:translateY(-2px);}
-#hero .hero-logo{max-height:80px;position:relative;z-index:2;}
-/* leaf deco */
-#hero .leaf-deco{position:absolute;bottom:-20px;left:-30px;font-size:8rem;opacity:.06;transform:rotate(-20deg);pointer-events:none;z-index:1;}
+#hero{position:relative;min-height:100vh;background:var(--charcoal);display:flex;align-items:stretch;overflow:hidden;}
+#hero .hero-img-panel{position:absolute;right:0;top:0;width:50%;height:100%;object-fit:cover;display:block;opacity:.55;}
+#hero .hero-color-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--charcoal) 48%,transparent 100%);}
+#hero .hero-content{position:relative;z-index:2;display:flex;align-items:center;width:100%;}
+#hero .hero-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem;}
+#hero .hero-title{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:.95;color:#fff;text-transform:uppercase;letter-spacing:-2px;}
+#hero .hero-title .accent{color:var(--teal2);display:block;}
+#hero .hero-divider{width:60px;height:5px;background:var(--orange);margin:1.5rem 0;}
+#hero .hero-advisor{font-size:.95rem;color:rgba(255,255,255,.8);margin-bottom:.3rem;}
+#hero .hero-team{font-size:.85rem;color:rgba(255,255,255,.5);max-width:520px;line-height:1.7;}
+#hero .btn-hero{display:inline-block;margin-top:2rem;padding:.7rem 2rem;background:var(--orange);color:#fff;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;text-decoration:none;transition:background .2s,transform .2s;}
+#hero .btn-hero:hover{background:var(--orange2);transform:translateY(-2px);}
+#hero .hero-logo{max-height:80px;position:absolute;bottom:2rem;right:2rem;z-index:3;opacity:.85;}
 </style>
 
 <!-- HERO -->
 <section id="hero">
-  <img src="images/image1.jpg" alt="" class="hero-bg-img" fetchpriority="high"/>
-  <div class="hero-bg-img-overlay"></div>
-  <span class="leaf-deco">&#127807;</span>
+  <img src="images/image1.jpg" alt="" class="hero-img-panel" fetchpriority="high"/>
+  <div class="hero-color-overlay"></div>
   <div class="container hero-content py-5">
-    <div class="row align-items-center min-vh-100">
+    <div class="row">
       <div class="col-lg-7 col-md-10">
-        <p class="hero-subtitle">&#128167; IIT Madras &mdash; 2026</p>
-        <h1 class="hero-title">Flood<br><em>Forecasting</em></h1>
-        <p class="hero-advisor"><strong>Advisor:</strong> Prof. Balaji Narasimhan</p>
+        <p class="hero-eyebrow">IIT Madras &mdash; 2026 &mdash; Research</p>
+        <h1 class="hero-title">Flood<span class="accent">Forecasting</span></h1>
+        <div class="hero-divider"></div>
+        <p class="hero-advisor"><strong style="color:var(--teal2)">Advisor:</strong> Prof. Balaji Narasimhan</p>
         <p class="hero-team">Elanchezhian &bull; Kirthiga SM &bull; Santhosh Kumar S &bull; Krushil &bull; Swarnadeep &bull; Arun RS &bull; Balaji L &bull; Bavithra &bull; Mukesh</p>
         <a href="#background" class="btn-hero">Explore Research &#8595;</a>
       </div>
-      <div class="col-lg-5 text-end d-none d-lg-flex align-items-end justify-content-end" style="min-height:100vh;padding-bottom:3rem;">
-        <img src="images/image3.png" alt="IIT Madras Logo" class="hero-logo"/>
-      </div>
     </div>
   </div>
+  <img src="images/image3.png" alt="IIT Madras Logo" class="hero-logo d-none d-lg-block"/>
 </section>
 
 <style>
 /* BACKGROUND */
-#background{background:var(--green);padding:var(--pad);}
-#background .section-title{color:var(--sand);}
-#background .section-title::after{background:var(--sand2);}
-#background .stat-banner{background:rgba(255,255,255,.12);border-left:4px solid var(--sand2);padding:1rem 1.5rem;border-radius:6px;font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:2rem;font-family:'Segoe UI',sans-serif;}
-.flood-timeline{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;}
-.timeline-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:40px;padding:.45rem 1.1rem;text-align:center;min-width:90px;transition:background .2s;}
-.timeline-item:hover{background:rgba(255,255,255,.22);}
-.timeline-item .year{font-size:1.1rem;font-weight:700;color:#fff;font-family:'Segoe UI',sans-serif;}
-.timeline-item .event{font-size:.68rem;color:rgba(255,255,255,.7);font-family:'Segoe UI',sans-serif;}
-.flood-card{border-radius:12px;overflow:hidden;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.3);}
-.flood-card img{width:100%;height:220px;object-fit:cover;display:block;}
-.flood-card .flood-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(27,45,31,.88));color:#fff;padding:1.5rem .8rem .6rem;font-size:.85rem;font-weight:600;font-family:'Segoe UI',sans-serif;}
-.flood-card .badge-year{background:var(--sand2);color:var(--brown);font-size:.72rem;padding:.2rem .5rem;border-radius:4px;margin-right:.4rem;font-weight:700;}
+#background{background:var(--cream);padding:var(--pad);}
+#background .section-title{color:var(--charcoal);}
+#background .stat-banner{background:var(--charcoal);color:#fff;border-left:6px solid var(--orange);padding:1rem 1.5rem;font-size:1.05rem;font-weight:700;margin-bottom:2rem;}
+.flood-timeline{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;}
+.timeline-item{background:#fff;border:2px solid var(--charcoal3);padding:.5rem 1rem;text-align:center;min-width:90px;transition:border-color .2s,background .2s;}
+.timeline-item:hover{border-color:var(--orange);background:var(--orange);color:#fff;}
+.timeline-item:hover .year,.timeline-item:hover .event{color:#fff;}
+.timeline-item .year{font-size:1.15rem;font-weight:900;color:var(--charcoal);}
+.timeline-item .event{font-size:.68rem;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.flood-card{overflow:hidden;position:relative;box-shadow:0 4px 20px rgba(0,0,0,.15);}
+.flood-card img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .4s;}
+.flood-card:hover img{transform:scale(1.05);}
+.flood-card .flood-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(28,28,30,.9));color:#fff;padding:1.5rem .8rem .6rem;font-size:.85rem;font-weight:700;}
+.flood-card .badge-year{background:var(--orange);color:#fff;font-size:.72rem;padding:.2rem .5rem;margin-right:.4rem;font-weight:700;}
 </style>
 
 <!-- BACKGROUND -->
@@ -144,24 +144,24 @@ img.lazy.loaded{background:none;animation:none;}
 
 <style>
 /* RTFF */
-#rtff{background:var(--white);padding:var(--pad);}
-#rtff .section-title{color:var(--green);}
-.rtff-diagram{border-radius:12px;box-shadow:0 4px 20px rgba(45,106,79,.12);width:100%;border:2px solid var(--sand2);}
-.feature-card{background:var(--sand);border-radius:12px;padding:1.6rem;border-bottom:4px solid var(--green3);height:100%;transition:transform .2s,box-shadow .2s;}
-.feature-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(45,106,79,.15);}
-.feature-card .fc-icon{font-size:2.2rem;margin-bottom:.8rem;}
-.feature-card h5{color:var(--green);font-weight:700;font-family:'Segoe UI',sans-serif;}
-.feature-card p{font-size:.88rem;color:var(--text-dim);margin:0;font-family:'Segoe UI',sans-serif;}
+#rtff{background:var(--charcoal);padding:var(--pad);}
+#rtff .section-title{color:#fff;}
+#rtff .section-title::after{background:var(--teal2);}
+.rtff-diagram{width:100%;box-shadow:0 0 0 3px var(--teal);}
+.feature-card{background:var(--charcoal2);border-top:4px solid var(--teal);padding:1.4rem;height:100%;transition:transform .2s,border-color .2s;}
+.feature-card:hover{transform:translateY(-4px);border-color:var(--orange);}
+.feature-card .fc-icon{font-size:2rem;margin-bottom:.8rem;}
+.feature-card h5{color:var(--teal2);font-weight:700;text-transform:uppercase;font-size:.9rem;letter-spacing:.5px;}
+.feature-card p{font-size:.88rem;color:rgba(255,255,255,.6);margin:0;}
 /* RHT */
-#rht{background:var(--sand);padding:var(--pad);}
-#rht .section-title{color:var(--brown);}
-#rht .section-title::after{background:var(--green3);}
-.rht-header{background:var(--green);color:#fff;border-radius:10px 10px 0 0;padding:.75rem 1.2rem;font-weight:700;font-size:1rem;font-family:'Segoe UI',sans-serif;}
-.rht-body{border:2px solid var(--green3);border-top:none;border-radius:0 0 10px 10px;padding:1.2rem;background:#fff;}
+#rht{background:var(--cream);padding:var(--pad);}
+#rht .section-title{color:var(--charcoal);}
+.rht-header{background:var(--teal);color:#fff;padding:.75rem 1.2rem;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.5px;}
+.rht-body{border:2px solid var(--teal3);border-top:none;padding:1.2rem;background:#fff;}
 .rht-body ul{padding-left:1.2rem;margin:0;}
-.rht-body ul li{margin-bottom:.5rem;font-size:.92rem;color:var(--text);}
-.rht-body ul li strong{color:var(--green);}
-.rht-diagram{width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(45,106,79,.1);margin-top:2rem;border:1px solid var(--sand2);}
+.rht-body ul li{margin-bottom:.5rem;font-size:.92rem;}
+.rht-body ul li strong{color:var(--teal);}
+.rht-diagram{width:100%;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:2rem;border:2px solid var(--teal3);}
 </style>
 
 <!-- RTFF -->
@@ -170,12 +170,12 @@ img.lazy.loaded{background:none;animation:none;}
     <h2 class="section-title reveal">Present Development &ndash; RTFF &amp; RTDAS</h2>
     <div class="row align-items-center g-4 mb-4">
       <div class="col-lg-6 reveal">
-        <p class="mb-3" style="font-family:'Segoe UI',sans-serif">Increasing frequency of flood events in the Chennai region demands a robust real-time response system. The project implements:</p>
-        <ul class="mb-3" style="line-height:1.9;font-family:'Segoe UI',sans-serif">
-          <li><strong style="color:var(--green)">RTFF (Real-Time Flood Forecasting)</strong> &mdash; hydrologic-hydraulic modelling for real-time flood warnings</li>
-          <li><strong style="color:var(--green)">RTDAS (Real-Time Data Acquisition System)</strong> &mdash; collects and transmits sensor data in real time</li>
+        <p class="mb-3" style="color:rgba(255,255,255,.75)">Increasing frequency of flood events in the Chennai region demands a robust real-time response system. The project implements:</p>
+        <ul class="mb-3" style="line-height:1.9;color:rgba(255,255,255,.75)">
+          <li><strong style="color:var(--teal2)">RTFF (Real-Time Flood Forecasting)</strong> &mdash; hydrologic-hydraulic modelling for real-time flood warnings</li>
+          <li><strong style="color:var(--teal2)">RTDAS (Real-Time Data Acquisition System)</strong> &mdash; collects and transmits sensor data in real time</li>
         </ul>
-        <p style="font-size:.9rem;color:var(--text-dim);font-family:'Segoe UI',sans-serif">Together they enhance early warning capabilities and support decision-making for flood management authorities.</p>
+        <p style="font-size:.9rem;color:rgba(255,255,255,.45)">Together they enhance early warning capabilities and support decision-making for flood management authorities.</p>
       </div>
       <div class="col-lg-6 reveal"><img data-src="images/image11.jpg" alt="RTFF System Diagram" class="rtff-diagram lazy"/></div>
     </div>
@@ -200,7 +200,7 @@ img.lazy.loaded{background:none;animation:none;}
         </ul></div>
       </div>
       <div class="col-lg-6 reveal">
-        <div class="rht-header" style="background:var(--green2)">&#128200; Expected Outcomes</div>
+        <div class="rht-header" style="background:var(--teal2)">&#128200; Expected Outcomes</div>
         <div class="rht-body"><ul>
           <li>Accurate flood predictions, visualization of runoff, identification of vulnerable zones, data-driven adaptation responses</li>
           <li>Promotes data-driven, stakeholder-collaborative flood management and planning</li>
@@ -216,27 +216,26 @@ img.lazy.loaded{background:none;animation:none;}
 
 <style>
 /* PARTNERS */
-#partners{background:var(--white);padding:var(--pad);}
-#partners .section-title{color:var(--brown);}
-#partners .section-title::after{background:var(--green3);}
-.partner-group-title{color:var(--green);font-weight:700;font-size:1rem;border-bottom:2px solid var(--sand2);padding-bottom:.4rem;margin-bottom:1.2rem;font-family:'Segoe UI',sans-serif;text-transform:uppercase;letter-spacing:.5px;}
-.partner-logo-wrap{background:var(--sand);border-radius:10px;padding:.8rem;display:flex;align-items:center;justify-content:center;height:90px;transition:transform .2s,box-shadow .2s;}
-.partner-logo-wrap:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(45,106,79,.15);}
+#partners{background:var(--charcoal2);padding:var(--pad);}
+#partners .section-title{color:#fff;}
+#partners .section-title::after{background:var(--teal2);}
+.partner-group-title{color:var(--teal2);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--charcoal3);padding-bottom:.4rem;margin-bottom:1.2rem;}
+.partner-logo-wrap{background:var(--charcoal3);padding:.8rem;display:flex;align-items:center;justify-content:center;height:90px;transition:background .2s;}
+.partner-logo-wrap:hover{background:#4a4a4c;}
 .partner-logo-wrap img{max-height:65px;max-width:100%;object-fit:contain;}
-.funding-badge{background:var(--green);color:#fff;border-radius:10px;padding:1rem 1.5rem;text-align:center;font-weight:600;font-size:.95rem;font-family:'Segoe UI',sans-serif;}
-.funding-badge .badge-org{font-size:.78rem;color:var(--green3);display:block;margin-top:.2rem;}
+.funding-badge{background:var(--teal);color:#fff;padding:1rem 1.5rem;text-align:center;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.5px;}
+.funding-badge .badge-org{font-size:.78rem;color:var(--teal3);display:block;margin-top:.2rem;text-transform:none;letter-spacing:0;}
 /* RESERVOIR */
-#reservoir{background:var(--sand);padding:var(--pad);}
-#reservoir .section-title{color:var(--brown);}
-#reservoir .section-title::after{background:var(--green3);}
-.reservoir-card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--sand2);box-shadow:0 4px 16px rgba(45,106,79,.08);transition:transform .2s,box-shadow .2s;}
-.reservoir-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(45,106,79,.15);}
+#reservoir{background:var(--cream);padding:var(--pad);}
+#reservoir .section-title{color:var(--charcoal);}
+.reservoir-card{overflow:hidden;border:2px solid var(--charcoal3);transition:border-color .2s,transform .2s;}
+.reservoir-card:hover{border-color:var(--teal);transform:translateY(-4px);}
 .reservoir-card img{width:100%;height:200px;object-fit:cover;}
-.reservoir-card .rc-body{padding:1.2rem;}
-.reservoir-card .rc-title{font-size:1.05rem;font-weight:700;color:var(--brown);font-family:'Segoe UI',sans-serif;}
-.reservoir-card .rc-cap{display:inline-block;background:var(--green3);color:var(--green);font-weight:700;font-size:.82rem;padding:.2rem .7rem;border-radius:20px;margin:.5rem 0;}
-.reservoir-card .rc-desc{font-size:.88rem;color:var(--text-dim);font-family:'Segoe UI',sans-serif;}
-.key-message-banner{background:var(--green);color:#fff;border-radius:10px;padding:1rem 1.5rem;font-weight:700;font-size:.95rem;margin-top:2rem;text-align:center;font-family:'Segoe UI',sans-serif;}
+.reservoir-card .rc-body{padding:1.2rem;background:#fff;}
+.reservoir-card .rc-title{font-size:1.05rem;font-weight:900;color:var(--charcoal);text-transform:uppercase;letter-spacing:-.3px;}
+.reservoir-card .rc-cap{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:.82rem;padding:.2rem .7rem;margin:.5rem 0;}
+.reservoir-card .rc-desc{font-size:.88rem;color:var(--text-dim);}
+.key-message-banner{background:var(--teal);color:#fff;padding:1rem 1.5rem;font-weight:700;font-size:.95rem;margin-top:2rem;text-align:center;border-left:6px solid var(--orange);}
 </style>
 
 <!-- PARTNERS -->
@@ -270,7 +269,7 @@ img.lazy.loaded{background:none;animation:none;}
 <section id="reservoir">
   <div class="container">
     <h2 class="section-title reveal">Reservoir Flood Mitigation</h2>
-    <p class="reveal mb-4" style="color:var(--text-dim);max-width:700px;font-family:'Segoe UI',sans-serif">An improved modelling framework for the simulation, optimisation and operation of small and medium reservoirs for flood mitigation.</p>
+    <p class="reveal mb-4" style="color:var(--text-dim);max-width:700px">An improved modelling framework for the simulation, optimisation and operation of small and medium reservoirs for flood mitigation.</p>
     <div class="row g-4 mb-3">
       <div class="col-md-6 reveal">
         <div class="reservoir-card">
@@ -291,38 +290,39 @@ img.lazy.loaded{background:none;animation:none;}
 
 <style>
 /* SUDS */
-#suds{background:var(--white);padding:var(--pad);}
-#suds .section-title{color:var(--green);}
-.suds-img{width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(45,106,79,.1);border:1px solid var(--sand2);}
-.presenter-badge{display:inline-block;background:var(--green3);color:var(--green);font-size:.82rem;padding:.3rem .8rem;border-radius:20px;margin-bottom:1rem;font-weight:700;font-family:'Segoe UI',sans-serif;}
+#suds{background:var(--charcoal);padding:var(--pad);}
+#suds .section-title{color:#fff;}
+#suds .section-title::after{background:var(--teal2);}
+.suds-img{width:100%;box-shadow:0 0 0 2px var(--teal);}
+.presenter-badge{display:inline-block;background:var(--orange);color:#fff;font-size:.78rem;padding:.3rem .8rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem;}
 /* CLIMATE */
-#climate{background:var(--sand);padding:var(--pad);}
-#climate .section-title{color:var(--brown);}
-#climate .section-title::after{background:var(--green3);}
-.climate-title-text{color:var(--green);font-weight:700;font-size:1.05rem;line-height:1.6;margin-bottom:1.2rem;font-family:'Segoe UI',sans-serif;}
-.team-chip{display:inline-block;background:#fff;border:1px solid var(--green3);color:var(--green);font-size:.8rem;font-weight:600;padding:.3rem .75rem;border-radius:20px;margin:.2rem;font-family:'Segoe UI',sans-serif;}
-.climate-img{width:100%;border-radius:10px;box-shadow:0 4px 16px rgba(45,106,79,.1);}
+#climate{background:var(--cream);padding:var(--pad);}
+#climate .section-title{color:var(--teal);}
+#climate .section-title::after{background:var(--orange);}
+.climate-title-text{color:var(--teal);font-weight:700;font-size:1.05rem;line-height:1.6;margin-bottom:1.2rem;}
+.team-chip{display:inline-block;background:var(--charcoal);color:#fff;font-size:.78rem;font-weight:600;padding:.3rem .75rem;margin:.2rem;text-transform:uppercase;letter-spacing:.3px;}
+.climate-img{width:100%;box-shadow:0 4px 16px rgba(0,0,0,.1);border:2px solid var(--teal3);}
 /* GALLERY */
-#gallery{background:var(--green);padding:var(--pad);}
-#gallery .section-title{color:var(--sand);}
-#gallery .section-title::after{background:var(--sand2);}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem;}
-.gallery-item{position:relative;overflow:hidden;border-radius:8px;cursor:pointer;aspect-ratio:4/3;background:var(--green2);}
+#gallery{background:var(--charcoal2);padding:var(--pad);}
+#gallery .section-title{color:#fff;}
+#gallery .section-title::after{background:var(--orange);}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.4rem;}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;background:var(--charcoal3);}
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .35s;display:block;}
 .gallery-item:hover img{transform:scale(1.08);}
 .gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;opacity:0;transition:background .3s,opacity .3s;}
-.gallery-item:hover .gallery-overlay{background:rgba(27,45,31,.65);opacity:1;}
+.gallery-item:hover .gallery-overlay{background:rgba(0,137,123,.7);opacity:1;}
 /* LIGHTBOX */
-#lightboxModal .modal-content{background:#000;border:2px solid var(--green3);}
+#lightboxModal .modal-content{background:#000;border:2px solid var(--teal);}
 #lightboxModal .modal-body{padding:0;text-align:center;}
 #lightboxModal img{max-height:85vh;max-width:100%;object-fit:contain;}
 #lightboxModal .btn-close{filter:invert(1);position:absolute;top:.5rem;right:.5rem;z-index:10;}
 /* FOOTER */
-footer{background:var(--brown);color:rgba(255,255,255,.75);padding:1.5rem 0;font-size:.85rem;font-family:'Segoe UI',sans-serif;}
-footer a{color:var(--green3);text-decoration:none;}
+footer{background:var(--charcoal);border-top:3px solid var(--teal);color:rgba(255,255,255,.6);padding:1.5rem 0;font-size:.85rem;}
+footer a{color:var(--teal2);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
-/* lazy dark override for gallery */
-#gallery img.lazy{background:linear-gradient(90deg,#2d6a4f 25%,#40916c 50%,#2d6a4f 75%);background-size:200% 100%;}
+/* lazy dark override */
+#rtff img.lazy,#partners img.lazy,#suds img.lazy,#gallery img.lazy{background:linear-gradient(90deg,#2c2c2e 25%,#3a3a3c 50%,#2c2c2e 75%);background-size:200% 100%;}
 @media(max-width:767px){.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
 </style>
 
@@ -331,7 +331,7 @@ footer a:hover{text-decoration:underline;}
   <div class="container">
     <h2 class="section-title reveal">Sustainable Drainage Systems</h2>
     <span class="presenter-badge reveal">&#128203; Presenter: Arun RS</span>
-    <p class="reveal mb-4" style="max-width:750px;font-family:'Segoe UI',sans-serif">Development of a <strong style="color:var(--green)">Model-driven Planning, Design, and Analysis Framework for Sustainable Drainage Systems (SuDS)</strong> &mdash; integrating urban hydrology with green infrastructure planning tools.</p>
+    <p class="reveal mb-4" style="color:rgba(255,255,255,.7);max-width:750px">Development of a <strong style="color:var(--teal2)">Model-driven Planning, Design, and Analysis Framework for Sustainable Drainage Systems (SuDS)</strong> &mdash; integrating urban hydrology with green infrastructure planning tools.</p>
     <div class="row g-3">
       <div class="col-md-4 reveal"><img data-src="images/image28.png" alt="SuDS Framework" class="suds-img lazy"/></div>
       <div class="col-md-4 reveal"><img data-src="images/image29.png" alt="SuDS Planning Map" class="suds-img lazy"/></div>
@@ -366,7 +366,7 @@ footer a:hover{text-decoration:underline;}
 <section id="gallery">
   <div class="container">
     <h2 class="section-title reveal">Research Results &amp; Diagrams</h2>
-    <p class="reveal mb-4" style="color:rgba(255,255,255,.75);font-family:'Segoe UI',sans-serif">Click any image to view full size.</p>
+    <p class="reveal mb-4" style="color:rgba(255,255,255,.5)">Click any image to view full size.</p>
     <div class="gallery-grid">
       <div class="gallery-item reveal"><img data-src="images/image33.png" alt="Hydrological Model Results" class="lazy"/><div class="gallery-overlay">&#128269;</div></div>
       <div class="gallery-item reveal"><img data-src="images/image34.png" alt="Flood Inundation Map" class="lazy"/><div class="gallery-overlay">&#128269;</div></div>
