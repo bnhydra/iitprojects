@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HydroTwin | Flood Forecasting</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>.page-section{background:#fff}</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<main class="page-section pt-5">
+  <div class="container" id="content" style="padding-top:4rem;padding-bottom:4rem"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+import { NAV_HTML, FOOTER_HTML, initNav, lazyLoad, revealAll, img } from './js/shared.js';
+document.getElementById('nav-placeholder').innerHTML = NAV_HTML;
+document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+initNav();
+
+const d = await fetch('data/rht.json').then(r => r.json());
+const el = document.getElementById('content');
+el.innerHTML = `
+  <h2 class="section-title reveal">${d.title}</h2>
+  <div class="row g-4 mb-4">
+    <div class="col-lg-6 reveal">
+      <div class="rht-header">${d.scope.heading}</div>
+      <div class="rht-body"><ul>${d.scope.points.map(p => `<li>${p}</li>`).join('')}</ul></div>
+    </div>
+    <div class="col-lg-6 reveal">
+      <div class="rht-header" style="background:var(--maroon-dk)">${d.outcomes.heading}</div>
+      <div class="rht-body"><ul>${d.outcomes.points.map(p => `<li>${p}</li>`).join('')}</ul></div>
+    </div>
+  </div>
+  <div class="row g-3">
+    ${d.diagrams.map(di => `<div class="col-md-6 reveal">${img(di.image, di.alt, 'rht-diagram')}</div>`).join('')}
+  </div>`;
+lazyLoad(el);
+revealAll(el);
+</script>
+</body>
+</html>

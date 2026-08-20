@@ -1,0 +1,10 @@
+{
+  "title": "Sustainable Drainage Systems",
+  "presenter": "Presenter: Arun RS",
+  "description": "Development of a <strong>Model-driven Planning, Design, and Analysis Framework for Sustainable Drainage Systems (SuDS)</strong> — integrating urban hydrology with green infrastructure planning tools.",
+  "images": [
+    { "src": "images/image28.png", "alt": "SuDS Framework Diagram" },
+    { "src": "images/image29.png", "alt": "SuDS Planning Map" },
+    { "src": "images/image30.png", "alt": "SuDS Analysis Results" }
+  ]
+}

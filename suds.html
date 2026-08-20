@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SuDS | Flood Forecasting</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+  .page-section{background:#f0f4f8}
+  .page-section .section-title{color:var(--dark-blue)}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<main class="page-section pt-5">
+  <div class="container" id="content" style="padding-top:4rem;padding-bottom:4rem"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+import { NAV_HTML, FOOTER_HTML, initNav, lazyLoad, revealAll, img } from './js/shared.js';
+document.getElementById('nav-placeholder').innerHTML = NAV_HTML;
+document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+initNav();
+
+const d = await fetch('data/suds.json').then(r => r.json());
+const el = document.getElementById('content');
+el.innerHTML = `
+  <h2 class="section-title reveal">${d.title}</h2>
+  <span class="presenter-badge reveal">📋 ${d.presenter}</span>
+  <p class="reveal mb-4" style="max-width:750px">${d.description}</p>
+  <div class="row g-3">
+    ${d.images.map(i => `<div class="col-md-4 reveal">${img(i.src, i.alt, 'suds-img')}</div>`).join('')}
+  </div>`;
+lazyLoad(el);
+revealAll(el);
+</script>
+</body>
+</html>

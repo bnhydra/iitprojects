@@ -1,0 +1,15 @@
+{
+  "title": "Present Development – RTFF & RTDAS",
+  "intro": "Increasing frequency of flood events in the Chennai region demands a robust real-time response system. The project implements:",
+  "bullets": [
+    "<strong style=\"color:var(--red-accent)\">RTFF (Real-Time Flood Forecasting)</strong> — hydrologic-hydraulic modelling for real-time flood warnings",
+    "<strong style=\"color:var(--red-accent)\">RTDAS (Real-Time Data Acquisition System)</strong> — collects and transmits sensor data (rainfall, water levels) in real time"
+  ],
+  "note": "Together they enhance early warning capabilities and support decision-making for flood management authorities.",
+  "diagramImage": "images/image11.jpg",
+  "features": [
+    { "icon": "📡", "title": "RTDAS", "desc": "Real-Time Data Acquisition System — sensor network collecting rainfall and water-level data continuously." },
+    { "icon": "🌊", "title": "RTFF",  "desc": "Real-Time Flood Forecasting — hydrologic-hydraulic model driven by live sensor data for flood prediction." },
+    { "icon": "⚠️", "title": "Early Warning", "desc": "Integrated SDSS (Spatial Decision Support System) for actionable flood alerts to authorities and communities." }
+  ]
+}

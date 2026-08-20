@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flood Forecasting | IIT Madras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <style>
+/* ── Design Tokens ─────────────────────────────────────── */
+:root {
+  --maroon:     #781F19;
+  --maroon-dk:  #5a1712;
+  --gold:       #D6A64F;
+  --light-blue: #DDEAF6;
+  --dark-blue:  #42719B;
+  --red-accent: #C00000;
+  --iit-brown:  #45200F;
+  --text-dark:  #1a1a1a;
+  --text-muted: #6c757d;
+  --section-pad: 5rem 0;
+}
+html { scroll-behavior: smooth; font-size: 15px; }
+body { margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--text-dark); }
+#mainNav {
+  background: var(--maroon) !important;
+  padding: .6rem 1rem;
+  transition: box-shadow .3s;
+}
+#mainNav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,.4); }
+#mainNav .navbar-brand { color: #fff !important; font-weight: 700; font-size: 1.1rem; letter-spacing: .5px; }
+#mainNav .nav-link { color: rgba(255,255,255,.82) !important; font-size: .82rem; font-weight: 500; padding: .4rem .65rem !important; border-radius: 4px; transition: background .2s, color .2s; }
+#mainNav .nav-link:hover, #mainNav .nav-link.active { color: #fff !important; background: rgba(255,255,255,.15); }
+#mainNav .navbar-toggler { border-color: rgba(255,255,255,.4); }
+#mainNav .navbar-toggler-icon { filter: invert(1); }
+#hero {
+  position: relative;
+  min-height: 100vh;
+  background: url('images/image1.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+#hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(120,31,25,.82) 0%, rgba(10,20,40,.75) 100%); }
+#hero .hero-content { position: relative; z-index: 2; color: #fff; }
+#hero .hero-title { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+#hero .hero-subtitle { font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--gold); font-weight: 600; letter-spacing: 1px; margin-bottom: 1.2rem; }
+#hero .hero-advisor { font-size: 1.05rem; color: rgba(255,255,255,.9); margin-bottom: .4rem; }
+#hero .hero-team { font-size: .9rem; color: rgba(255,255,255,.72); max-width: 600px; }
+#hero .hero-logo { max-height: 90px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
+#hero .btn-hero { background: var(--gold); color: #1a1a1a; font-weight: 700; border: none; padding: .75rem 2rem; border-radius: 30px; font-size: 1rem; margin-top: 1.5rem; transition: transform .2s, box-shadow .2s; }
+#hero .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(214,166,79,.5); }
+.section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; position: relative; padding-bottom: .6rem; margin-bottom: 2rem; }
+.section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: var(--gold); border-radius: 2px; }
+.section-title.centered::after { left: 50%; transform: translateX(-50%); }
+#background { background: #0d1b2a; color: #fff; padding: var(--section-pad); }
+#background .section-title { color: #fff; }
+#background .stat-banner { background: var(--dark-blue); border-left: 5px solid var(--gold); padding: 1rem 1.5rem; border-radius: 6px; font-size: 1.1rem; font-weight: 600; margin-bottom: 2rem; }
+.flood-timeline { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
+.timeline-item { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 8px; padding: .5rem 1rem; text-align: center; min-width: 90px; transition: background .2s; }
+.timeline-item:hover { background: rgba(214,166,79,.2); border-color: var(--gold); }
+.timeline-item .year { font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+.timeline-item .event { font-size: .7rem; color: rgba(255,255,255,.65); }
+.flood-card { border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+.flood-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.flood-card .flood-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,.8)); color: #fff; padding: 1.5rem .8rem .6rem; font-size: .85rem; font-weight: 600; }
+.flood-card .flood-label .badge-year { background: var(--gold); color: #1a1a1a; font-size: .75rem; padding: .2rem .5rem; border-radius: 4px; margin-right: .4rem; }
+#rtff { background: #f8f9fa; padding: var(--section-pad); }
+#rtff .section-title { color: var(--maroon); }
+.rtff-diagram { border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,.12); width: 100%; }
+.feature-card { background: #fff; border-radius: 10px; padding: 1.4rem; border-top: 4px solid var(--maroon); box-shadow: 0 2px 12px rgba(0,0,0,.07); height: 100%; transition: transform .2s, box-shadow .2s; }
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.feature-card .fc-icon { font-size: 2rem; margin-bottom: .8rem; }
+.feature-card h5 { color: var(--red-accent); font-weight: 700; }
+.feature-card p { font-size: .88rem; color: var(--text-muted); margin: 0; }
+#rht { background: #fff; padding: var(--section-pad); }
+.rht-header { background: var(--maroon); color: #fff; border-radius: 8px 8px 0 0; padding: .7rem 1.2rem; font-weight: 700; font-size: 1rem; }
+.rht-body { border: 2px solid var(--maroon); border-top: none; border-radius: 0 0 8px 8px; padding: 1.2rem; background: #fff; }
+.rht-body ul { padding-left: 1.2rem; margin: 0; }
+.rht-body ul li { margin-bottom: .5rem; font-size: .92rem; }
+.rht-body ul li strong { color: var(--red-accent); }
+.rht-diagram { width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,.1); margin-top: 2rem; }
+#partners { background: var(--light-blue); padding: var(--section-pad); }
+#partners .section-title { color: var(--iit-brown); }
+.partner-group-title { color: var(--iit-brown); font-weight: 700; font-size: 1.1rem; border-bottom: 2px solid var(--gold); padding-bottom: .4rem; margin-bottom: 1.2rem; }
+.partner-logo-wrap { background: #fff; border-radius: 8px; padding: .8rem; display: flex; align-items: center; justify-content: center; height: 90px; box-shadow: 0 2px 8px rgba(0,0,0,.08); transition: transform .2s; }
+.partner-logo-wrap:hover { transform: scale(1.05); }
+.partner-logo-wrap img { max-height: 65px; max-width: 100%; object-fit: contain; }
+.funding-badge { background: var(--maroon); color: #fff; border-radius: 8px; padding: 1rem 1.5rem; text-align: center; font-weight: 600; font-size: .95rem; }
+.funding-badge .badge-org { font-size: .78rem; color: var(--gold); display: block; margin-top: .2rem; }
+#reservoir { background: #1a1a2e; color: #fff; padding: var(--section-pad); }
+#reservoir .section-title { color: #fff; }
+.reservoir-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; transition: transform .2s; }
+.reservoir-card:hover { transform: translateY(-4px); }
+.reservoir-card img { width: 100%; height: 200px; object-fit: cover; }
+.reservoir-card .rc-body { padding: 1.2rem; }
+.reservoir-card .rc-title { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+.reservoir-card .rc-cap { display: inline-block; background: var(--gold); color: #1a1a1a; font-weight: 700; font-size: .85rem; padding: .25rem .7rem; border-radius: 20px; margin: .5rem 0; }
+.reservoir-card .rc-desc { font-size: .88rem; color: rgba(255,255,255,.75); }
+.key-message-banner { background: var(--gold); color: #1a1a1a; border-radius: 8px; padding: 1rem 1.5rem; font-weight: 700; font-size: .95rem; margin-top: 2rem; text-align: center; }
+#suds { background: #f0f4f8; padding: var(--section-pad); }
+#suds .section-title { color: var(--dark-blue); }
+.suds-img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+.presenter-badge { display: inline-block; background: var(--dark-blue); color: #fff; font-size: .82rem; padding: .3rem .8rem; border-radius: 20px; margin-bottom: 1rem; }
+#climate { background: #fff; padding: var(--section-pad); }
+#climate .section-title { color: #0070C0; }
+.climate-title-text { color: #0070C0; font-weight: 700; font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.2rem; }
+.team-chip { display: inline-block; background: var(--light-blue); color: var(--dark-blue); font-size: .8rem; font-weight: 600; padding: .3rem .75rem; border-radius: 20px; margin: .2rem; }
+.climate-img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+#gallery { background: #111; padding: var(--section-pad); }
+#gallery .section-title { color: #fff; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .6rem; }
+.gallery-item { position: relative; overflow: hidden; border-radius: 6px; cursor: pointer; aspect-ratio: 4/3; background: #222; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; display: block; }
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item .gallery-overlay { position: absolute; inset: 0; background: rgba(120,31,25,.0); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #fff; opacity: 0; transition: background .3s, opacity .3s; }
+.gallery-item:hover .gallery-overlay { background: rgba(120,31,25,.55); opacity: 1; }
+#lightboxModal .modal-content { background: #000; border: none; }
+#lightboxModal .modal-body { padding: 0; text-align: center; }
+#lightboxModal img { max-height: 85vh; max-width: 100%; object-fit: contain; }
+#lightboxModal .btn-close { filter: invert(1); position: absolute; top: .5rem; right: .5rem; z-index: 10; }
+footer { background: var(--maroon-dk); color: rgba(255,255,255,.75); padding: 1.5rem 0; font-size: .85rem; }
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+img.lazy { background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; min-height: 60px; display: block; width: 100%; }
+img.lazy.loaded { background: none; animation: none; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+#background img.lazy, #reservoir img.lazy, #gallery img.lazy { background: linear-gradient(90deg, #1e2a38 25%, #263545 50%, #1e2a38 75%); background-size: 200% 100%; animation: shimmer-dark 1.4s infinite; }
+@keyframes shimmer-dark { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (max-width: 767px) {
+  :root { --section-pad: 3rem 0; }
+  #hero .hero-title { font-size: 2rem; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .flood-timeline { gap: .4rem; }
+  .timeline-item { min-width: 75px; padding: .4rem .6rem; }
+}
+@media (min-width: 768px) { html { font-size: 16px; } }
+    </style>
+</head>
+<body>
+
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid px-3">
+            <a class="navbar-brand" href="#hero">&#127754; Flood Forecasting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rtff">RTFF &amp; RTDAS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rht">HydroTwin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservoir">Reservoirs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#suds">SuDS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#climate">Climate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section id="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content py-5">
+                <div class="row align-items-center min-vh-100">
+                    <div class="col-lg-8 col-md-10">
+                        <p class="hero-subtitle mb-2">&#128167; IIT Madras &mdash; 2026</p>
+                        <h1 class="hero-title mb-3">Flood Forecasting</h1>
+                        <p class="hero-advisor">
+                            <i style="color:var(--gold)">&#128100;</i>
+                            <strong>Advisor:</strong> Prof. Balaji Narasimhan
+                        </p>
+                        <p class="hero-team">
+                            <i style="color:var(--gold)">&#128101;</i>
+                            Elanchezhian &bull; Kirthiga SM &bull; Santhosh Kumar S &bull; Krushil &bull;
+                            Swarnadeep &bull; Arun RS &bull; Balaji L &bull; Bavithra &bull; Mukesh
+                        </p>
+                        <a href="#background" class="btn btn-hero">Explore Research &#8595;</a>
+                    </div>
+                    <div class="col-lg-4 text-end d-none d-lg-block">
+                        <img src="images/image3.png" alt="IIT Madras Logo" class="hero-logo" fetchpriority="high" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BACKGROUND -->
+        <section id="background">
+            <div class="container">
+                <h2 class="section-title reveal">Background &ndash; Issue of Flooding</h2>
+                <div class="stat-banner reveal">
+                    <i style="color:var(--gold)">&#9888;</i>
+                    Recurring floods in Chennai for the last two decades
+                </div>
+                <div class="flood-timeline reveal">
+                    <div class="timeline-item"><div class="year">2005</div><div class="event">Flood</div></div>
+                    <div class="timeline-item"><div class="year">2008</div><div class="event">Flood</div></div>
+                    <div class="timeline-item"><div class="year">2015</div><div class="event">Major Flood</div></div>
+                    <div class="timeline-item"><div class="year">2020</div><div class="event">Nivar Cyclone</div></div>
+                    <div class="timeline-item"><div class="year">2021</div><div class="event">Flood</div></div>
+                    <div class="timeline-item"><div class="year">2023</div><div class="event">Michaung Cyclone</div></div>
+                    <div class="timeline-item"><div class="year">2024</div><div class="event">Fengal Cyclone</div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4 reveal">
+                        <div class="flood-card">
+                            <img data-src="images/image8.png" alt="CTO Colony West Tambaram 2015" class="lazy" />
+                            <div class="flood-label"><span class="badge-year">2015</span>CTO Colony, West Tambaram</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <div class="flood-card">
+                            <img data-src="images/image9.png" alt="Government Hospital Tambaram 2015" class="lazy" />
+                            <div class="flood-label"><span class="badge-year">2015</span>Government Hospital, Tambaram</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <div class="flood-card">
+                            <img data-src="images/image10.png" alt="West Tambaram 2023" class="lazy" />
+                            <div class="flood-label"><span class="badge-year">2023</span>West Tambaram</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RTFF / RTDAS -->
+        <section id="rtff">
+            <div class="container">
+                <h2 class="section-title reveal">Present Development &ndash; RTFF &amp; RTDAS</h2>
+                <div class="row align-items-center g-4 mb-4">
+                    <div class="col-lg-6 reveal">
+                        <p class="mb-3">Increasing frequency of flood events in the Chennai region demands a robust real-time response system. The project implements:</p>
+                        <ul class="mb-3" style="line-height:1.9">
+                            <li><strong style="color:var(--red-accent)">RTFF (Real-Time Flood Forecasting)</strong> &mdash; hydrologic-hydraulic modelling for real-time flood warnings</li>
+                            <li><strong style="color:var(--red-accent)">RTDAS (Real-Time Data Acquisition System)</strong> &mdash; collects and transmits sensor data (rainfall, water levels) in real time</li>
+                        </ul>
+                        <p class="text-muted" style="font-size:.9rem">Together they enhance early warning capabilities and support decision-making for flood management authorities.</p>
+                    </div>
+                    <div class="col-lg-6 reveal">
+                        <img data-src="images/image11.jpg" alt="RTFF System Diagram" class="rtff-diagram lazy" />
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4 reveal">
+                        <div class="feature-card">
+                            <div class="fc-icon">&#128225;</div>
+                            <h5>RTDAS</h5>
+                            <p>Real-Time Data Acquisition System — sensor network collecting rainfall and water-level data continuously.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <div class="feature-card">
+                            <div class="fc-icon">&#127754;</div>
+                            <h5>RTFF</h5>
+                            <p>Real-Time Flood Forecasting — hydrologic-hydraulic model driven by live sensor data for flood prediction.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <div class="feature-card">
+                            <div class="fc-icon">&#9888;&#65039;</div>
+                            <h5>Early Warning</h5>
+                            <p>Integrated SDSS (Spatial Decision Support System) for actionable flood alerts to authorities and communities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESILIENT HYDROTWIN -->
+        <section id="rht">
+            <div class="container">
+                <h2 class="section-title reveal">Resilient Hydro Twin (RHT)</h2>
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-6 reveal">
+                        <div class="rht-header">&#127961; Scope</div>
+                        <div class="rht-body">
+                            <ul>
+                                <li>Development of a <strong>city-scale digital twin</strong> integrating <strong>hydrological, hydraulic, urban infrastructure, water resource, governance, and human behaviour models</strong></li>
+                                <li>Incorporates <strong>participatory governance</strong>, enabling planners and communities to co-create flood response strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 reveal">
+                        <div class="rht-header" style="background:var(--maroon-dk)">&#128200; Expected Outcomes</div>
+                        <div class="rht-body">
+                            <ul>
+                                <li>Accurate flood predictions, visualization of runoff, identification of vulnerable zones, data-driven adaptation responses</li>
+                                <li>Promotes data-driven, stakeholder-collaborative flood management and planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6 reveal">
+                        <img data-src="images/image15.jpg" alt="HydroTwin Architecture Diagram" class="rht-diagram lazy" />
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <img data-src="images/image4.png" alt="HydroTwin System Overview" class="rht-diagram lazy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTNERS & FUNDING -->
+        <section id="partners">
+            <div class="container">
+                <h2 class="section-title centered text-center reveal">Key Partners &amp; Funding</h2>
+                <div class="row g-3 justify-content-center mb-4">
+                    <div class="col-md-4 col-sm-6 reveal">
+                        <div class="funding-badge">Department of Science and Technology<span class="badge-org">DST &mdash; India</span></div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 reveal">
+                        <div class="funding-badge">Dutch Research Council<span class="badge-org">NWO &mdash; Netherlands</span></div>
+                    </div>
+                </div>
+                <h3 class="partner-group-title reveal">Indian Consortium Partners</h3>
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image17.png" alt="Indian Partner 1" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image18.png" alt="Indian Partner 2" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image19.png" alt="Indian Partner 3" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image20.jpg" alt="Indian Partner 4" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image21.png" alt="Indian Partner 5" class="lazy" /></div></div>
+                </div>
+                <h3 class="partner-group-title reveal">Dutch Consortium Partners</h3>
+                <div class="row g-3">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image22.jpg" alt="Dutch Partner 1" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image23.png" alt="Dutch Partner 2" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image24.png" alt="Dutch Partner 3" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image25.png" alt="Dutch Partner 4" class="lazy" /></div></div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal"><div class="partner-logo-wrap"><img data-src="images/image26.jpg" alt="Dutch Partner 5" class="lazy" /></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESERVOIR FLOOD MITIGATION -->
+        <section id="reservoir">
+            <div class="container">
+                <h2 class="section-title reveal" style="color:#fff">Reservoir Flood Mitigation</h2>
+                <p class="reveal mb-4" style="color:rgba(255,255,255,.75);max-width:700px">An improved modelling framework for the simulation, optimisation and operation of small and medium reservoirs for flood mitigation.</p>
+                <div class="row g-4 mb-3">
+                    <div class="col-md-6 reveal">
+                        <div class="reservoir-card">
+                            <img data-src="images/image27.png" alt="Chennai Floods 2015" class="lazy" />
+                            <div class="rc-body">
+                                <div class="rc-title">Chennai Floods &mdash; 2015</div>
+                                <span class="rc-cap">~100 Mm&sup3;</span>
+                                <p class="rc-desc">Chembarambakkam reservoir overflow triggered catastrophic urban flooding across Chennai, highlighting the need for real-time reservoir operation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="reservoir-card">
+                            <img data-src="images/image5.png" alt="Pune Floods 2024" class="lazy" />
+                            <div class="rc-body">
+                                <div class="rc-title">Pune Floods &mdash; 2024</div>
+                                <span class="rc-cap">~60 Mm&sup3;</span>
+                                <p class="rc-desc">Khadakwasla Dam releases caused severe downstream flooding in Pune, demonstrating the critical role of optimised dam operation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="key-message-banner reveal">
+                    <i>&#8505;</i>
+                    Need for flood control of small and medium reservoirs used for conservation purpose located just upstream of Indian cities.
+                </div>
+            </div>
+        </section>
+
+        <!-- SUSTAINABLE DRAINAGE SYSTEMS -->
+        <section id="suds">
+            <div class="container">
+                <h2 class="section-title reveal">Sustainable Drainage Systems</h2>
+                <span class="presenter-badge reveal">&#128203; Presenter: Arun RS</span>
+                <p class="reveal mb-4" style="max-width:750px">Development of a <strong>Model-driven Planning, Design, and Analysis Framework for Sustainable Drainage Systems (SuDS)</strong> &mdash; integrating urban hydrology with green infrastructure planning tools.</p>
+                <div class="row g-3">
+                    <div class="col-md-4 reveal"><img data-src="images/image28.png" alt="SuDS Framework Diagram" class="suds-img lazy" /></div>
+                    <div class="col-md-4 reveal"><img data-src="images/image29.png" alt="SuDS Planning Map" class="suds-img lazy" /></div>
+                    <div class="col-md-4 reveal"><img data-src="images/image30.png" alt="SuDS Analysis Results" class="suds-img lazy" /></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLIMATE CHANGE & IRRIGATION -->
+        <section id="climate">
+            <div class="container">
+                <h2 class="section-title reveal" style="color:#0070C0">Climate Change &amp; Irrigation</h2>
+                <div class="row align-items-start g-4">
+                    <div class="col-lg-6 reveal">
+                        <p class="climate-title-text">Assessment of Hydrological impacts due to Climate change and development of Best Irrigation and Crop Management Strategies that increases Resilience in Cauvery and Tamiraparani River Basins</p>
+                        <p class="mb-2"><strong>Research Team &mdash; IIT Madras</strong></p>
+                        <div class="mb-3">
+                            <span class="team-chip">Prof. Balaji Narasimhan</span>
+                            <span class="team-chip">Noufia M A</span>
+                            <span class="team-chip">Shyma M</span>
+                            <span class="team-chip">Jeba Princy</span>
+                            <span class="team-chip">Kirthiga S M</span>
+                            <span class="team-chip">Bindhu VM</span>
+                            <span class="team-chip">Akansha Soni</span>
+                            <span class="team-chip">Prachi D. Khobragade</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 reveal">
+                        <div class="row g-3">
+                            <div class="col-6"><img data-src="images/image31.png" alt="Cauvery River Basin Map" class="climate-img lazy" /></div>
+                            <div class="col-6"><img data-src="images/image32.png" alt="Tamiraparani River Basin Map" class="climate-img lazy" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS GALLERY -->
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title reveal" style="color:#fff">Research Results &amp; Diagrams</h2>
+                <p class="reveal mb-4" style="color:rgba(255,255,255,.65)">Click any image to view full size. Covers hydrological models, flood maps, digital twin architecture, sensor networks, and field data.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal" title="Hydrological Model Results"><img data-src="images/image33.png" alt="Hydrological Model Results" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Flood Inundation Map"><img data-src="images/image34.png" alt="Flood Inundation Map" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Digital Twin Architecture"><img data-src="images/image35.png" alt="Digital Twin Architecture" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="RTDAS Sensor Network"><img data-src="images/image36.png" alt="RTDAS Sensor Network" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Runoff Visualization"><img data-src="images/image37.png" alt="Runoff Visualization" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Vulnerable Zone Map"><img data-src="images/image38.png" alt="Vulnerable Zone Map" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Rainfall Analysis"><img data-src="images/image39.png" alt="Rainfall Analysis" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Water Level Data"><img data-src="images/image40.png" alt="Water Level Data" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Basin Delineation"><img data-src="images/image41.png" alt="Basin Delineation" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Flood Simulation"><img data-src="images/image42.png" alt="Flood Simulation" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Urban Drainage Model"><img data-src="images/image43.png" alt="Urban Drainage Model" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Climate Projection"><img data-src="images/image44.png" alt="Climate Projection" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Reservoir Operation"><img data-src="images/image45.png" alt="Reservoir Operation" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="SuDS Performance"><img data-src="images/image46.png" alt="SuDS Performance" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Governance Framework"><img data-src="images/image47.png" alt="Governance Framework" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Community Mapping"><img data-src="images/image48.png" alt="Community Mapping" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Satellite Imagery"><img data-src="images/image49.png" alt="Satellite Imagery" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Field Survey Data"><img data-src="images/image50.png" alt="Field Survey Data" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Model Calibration"><img data-src="images/image51.png" alt="Model Calibration" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Validation Results"><img data-src="images/image52.png" alt="Validation Results" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Flood Event Photo"><img data-src="images/image53.jpg" alt="Flood Event Photo" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Sensor Installation"><img data-src="images/image54.png" alt="Sensor Installation" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Data Dashboard"><img data-src="images/image55.png" alt="Data Dashboard" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Warning System"><img data-src="images/image56.png" alt="Warning System" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Infrastructure Map"><img data-src="images/image57.png" alt="Infrastructure Map" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Drainage Network"><img data-src="images/image58.png" alt="Drainage Network" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Catchment Analysis"><img data-src="images/image59.png" alt="Catchment Analysis" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Inundation Depth"><img data-src="images/image60.png" alt="Inundation Depth" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Field Observation"><img data-src="images/image61.jpg" alt="Field Observation" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Model Output"><img data-src="images/image62.png" alt="Model Output" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Risk Assessment"><img data-src="images/image63.png" alt="Risk Assessment" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Adaptation Strategy"><img data-src="images/image64.png" alt="Adaptation Strategy" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Digital Twin View"><img data-src="images/image65.png" alt="Digital Twin View" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Stakeholder Map"><img data-src="images/image66.png" alt="Stakeholder Map" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Crop Model"><img data-src="images/image67.png" alt="Crop Model" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Irrigation Plan"><img data-src="images/image68.png" alt="Irrigation Plan" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Basin Hydrology"><img data-src="images/image69.png" alt="Basin Hydrology" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Flood Frequency"><img data-src="images/image70.png" alt="Flood Frequency" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Return Period"><img data-src="images/image71.png" alt="Return Period" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Urban Flood Map"><img data-src="images/image72.png" alt="Urban Flood Map" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Reservoir Level"><img data-src="images/image73.png" alt="Reservoir Level" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Discharge Data"><img data-src="images/image74.png" alt="Discharge Data" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Rainfall Radar"><img data-src="images/image75.png" alt="Rainfall Radar" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Ensemble Forecast"><img data-src="images/image76.png" alt="Ensemble Forecast" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Alert Threshold"><img data-src="images/image77.png" alt="Alert Threshold" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Network Diagram"><img data-src="images/image78.png" alt="Network Diagram" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="GIS Analysis"><img data-src="images/image79.png" alt="GIS Analysis" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Flood Extent"><img data-src="images/image80.png" alt="Flood Extent" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Model Schematic"><img data-src="images/image81.png" alt="Model Schematic" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Results Summary"><img data-src="images/image82.png" alt="Results Summary" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Performance Chart"><img data-src="images/image83.png" alt="Performance Chart" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Site Photo"><img data-src="images/image84.jpg" alt="Site Photo" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Data Flow"><img data-src="images/image85.png" alt="Data Flow" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="System Integration"><img data-src="images/image86.png" alt="System Integration" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Field Work"><img data-src="images/image87.jpg" alt="Field Work" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Team Photo"><img data-src="images/image88.jpg" alt="Team Photo" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Conclusion Slide"><img data-src="images/image89.png" alt="Conclusion Slide" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Future Work"><img data-src="images/image90.png" alt="Future Work" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                    <div class="gallery-item reveal" title="Acknowledgements"><img data-src="images/image91.jpg" alt="Acknowledgements" class="lazy" /><div class="gallery-overlay">&#128269;</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body position-relative">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <img id="lightboxImg" src="" alt="Full size image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p class="mb-1">
+                <strong style="color:#fff;">Flood Forecasting Research Group</strong> &mdash;
+                Indian Institute of Technology, Madras
+            </p>
+            <p class="mb-0">
+                &copy; 2026 &nbsp;|&nbsp; Advisor: Prof. Balaji Narasimhan &nbsp;|&nbsp;
+                <a href="#hero">Back to top &#8593;</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+(function () {
+    const lazyImgs = Array.from(document.querySelectorAll('img.lazy'));
+    if (!lazyImgs.length) return;
+    function loadImg(img) {
+        const src = img.dataset.src;
+        if (!src) return;
+        img.src = src;
+        img.removeAttribute('data-src');
+        img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
+        img.addEventListener('error', () => img.classList.add('loaded'), { once: true });
+    }
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(e => { if (e.isIntersecting) { loadImg(e.target); obs.unobserve(e.target); } });
+        }, { rootMargin: '200px 0px' });
+        lazyImgs.forEach(img => io.observe(img));
+    } else {
+        lazyImgs.forEach(loadImg);
+    }
+})();
+window.addEventListener('scroll', () => {
+    document.getElementById('mainNav')?.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('#mainNav .nav-link[href^="#"]');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+}, { passive: true });
+const lbModal = document.getElementById('lightboxModal');
+const lbImg   = document.getElementById('lightboxImg');
+if (lbModal && lbImg) {
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            lbImg.src = img.src || img.dataset.src;
+            new bootstrap.Modal(lbModal).show();
+        });
+    });
+}
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>

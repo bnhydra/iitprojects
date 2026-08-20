@@ -1,0 +1,13 @@
+{
+  "title": "Climate Change & Irrigation",
+  "description": "Assessment of Hydrological impacts due to Climate change and development of Best Irrigation and Crop Management Strategies that increases Resilience in Cauvery and Tamiraparani River Basins",
+  "teamLabel": "Research Team — IIT Madras",
+  "team": [
+    "Prof. Balaji Narasimhan", "Noufia M A", "Shyma M", "Jeba Princy",
+    "Kirthiga S M", "Bindhu VM", "Akansha Soni", "Prachi D. Khobragade"
+  ],
+  "images": [
+    { "src": "images/image31.png", "alt": "Cauvery River Basin Map" },
+    { "src": "images/image32.png", "alt": "Tamiraparani River Basin Map" }
+  ]
+}

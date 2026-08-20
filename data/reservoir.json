@@ -1,0 +1,19 @@
+{
+  "title": "Reservoir Flood Mitigation",
+  "intro": "An improved modelling framework for the simulation, optimisation and operation of small and medium reservoirs for flood mitigation.",
+  "cards": [
+    {
+      "image": "images/image27.png",
+      "title": "Chennai Floods — 2015",
+      "capacity": "~100 Mm³",
+      "desc": "Chembarambakkam reservoir overflow triggered catastrophic urban flooding across Chennai, highlighting the need for real-time reservoir operation."
+    },
+    {
+      "image": "images/image5.png",
+      "title": "Pune Floods — 2024",
+      "capacity": "~60 Mm³",
+      "desc": "Khadakwasla Dam releases caused severe downstream flooding in Pune, demonstrating the critical role of optimised dam operation."
+    }
+  ],
+  "keyMessage": "ℹ Need for flood control of small and medium reservoirs used for conservation purpose located just upstream of Indian cities."
+}

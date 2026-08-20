@@ -1,0 +1,21 @@
+{
+  "title": "Resilient Hydro Twin (RHT)",
+  "scope": {
+    "heading": "🏙 Scope",
+    "points": [
+      "Development of a <strong>city-scale digital twin</strong> integrating <strong>hydrological, hydraulic, urban infrastructure, water resource, governance, and human behaviour models</strong>",
+      "Incorporates <strong>participatory governance</strong>, enabling planners and communities to co-create flood response strategies"
+    ]
+  },
+  "outcomes": {
+    "heading": "📈 Expected Outcomes",
+    "points": [
+      "Accurate flood predictions, visualization of runoff, identification of vulnerable zones, data-driven adaptation responses",
+      "Promotes data-driven, stakeholder-collaborative flood management and planning"
+    ]
+  },
+  "diagrams": [
+    { "image": "images/image15.jpg", "alt": "HydroTwin Architecture Diagram" },
+    { "image": "images/image4.png",  "alt": "HydroTwin System Overview" }
+  ]
+}

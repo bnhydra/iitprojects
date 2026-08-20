@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Partners | Flood Forecasting</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+  .page-section{background:var(--light-blue)}
+  .page-section .section-title{color:var(--iit-brown)}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<main class="page-section pt-5">
+  <div class="container" id="content" style="padding-top:4rem;padding-bottom:4rem"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+import { NAV_HTML, FOOTER_HTML, initNav, lazyLoad, revealAll, img } from './js/shared.js';
+document.getElementById('nav-placeholder').innerHTML = NAV_HTML;
+document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+initNav();
+
+const d = await fetch('data/partners.json').then(r => r.json());
+const el = document.getElementById('content');
+el.innerHTML = `
+  <h2 class="section-title centered text-center reveal">${d.title}</h2>
+  <div class="row g-3 justify-content-center mb-4">
+    ${d.funders.map(f => `
+    <div class="col-md-4 col-sm-6 reveal">
+      <div class="funding-badge">${f.name}<span class="badge-org">${f.org}</span></div>
+    </div>`).join('')}
+  </div>
+  <h3 class="partner-group-title reveal">Indian Consortium Partners</h3>
+  <div class="row g-3 mb-4">
+    ${d.indianPartners.map(p => `
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+      <div class="partner-logo-wrap">${img(p.image, p.alt)}</div>
+    </div>`).join('')}
+  </div>
+  <h3 class="partner-group-title reveal">Dutch Consortium Partners</h3>
+  <div class="row g-3">
+    ${d.dutchPartners.map(p => `
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+      <div class="partner-logo-wrap">${img(p.image, p.alt)}</div>
+    </div>`).join('')}
+  </div>`;
+lazyLoad(el);
+revealAll(el);
+</script>
+</body>
+</html>

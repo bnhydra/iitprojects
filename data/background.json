@@ -1,0 +1,18 @@
+{
+  "title": "Background – Issue of Flooding",
+  "statBanner": "⚠ Recurring floods in Chennai for the last two decades",
+  "timeline": [
+    { "year": "2005", "event": "Flood" },
+    { "year": "2008", "event": "Flood" },
+    { "year": "2015", "event": "Major Flood" },
+    { "year": "2020", "event": "Nivar Cyclone" },
+    { "year": "2021", "event": "Flood" },
+    { "year": "2023", "event": "Michaung Cyclone" },
+    { "year": "2024", "event": "Fengal Cyclone" }
+  ],
+  "floodCards": [
+    { "image": "images/image8.png",  "year": "2015", "label": "CTO Colony, West Tambaram" },
+    { "image": "images/image9.png",  "year": "2015", "label": "Government Hospital, Tambaram" },
+    { "image": "images/image10.png", "year": "2023", "label": "West Tambaram" }
+  ]
+}

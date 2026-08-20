@@ -1,0 +1,21 @@
+{
+  "title": "Key Partners & Funding",
+  "funders": [
+    { "name": "Department of Science and Technology", "org": "DST — India" },
+    { "name": "Dutch Research Council", "org": "NWO — Netherlands" }
+  ],
+  "indianPartners": [
+    { "image": "images/image17.png", "alt": "Indian Partner 1" },
+    { "image": "images/image18.png", "alt": "Indian Partner 2" },
+    { "image": "images/image19.png", "alt": "Indian Partner 3" },
+    { "image": "images/image20.jpg", "alt": "Indian Partner 4" },
+    { "image": "images/image21.png", "alt": "Indian Partner 5" }
+  ],
+  "dutchPartners": [
+    { "image": "images/image22.jpg", "alt": "Dutch Partner 1" },
+    { "image": "images/image23.png", "alt": "Dutch Partner 2" },
+    { "image": "images/image24.png", "alt": "Dutch Partner 3" },
+    { "image": "images/image25.png", "alt": "Dutch Partner 4" },
+    { "image": "images/image26.jpg", "alt": "Dutch Partner 5" }
+  ]
+}
