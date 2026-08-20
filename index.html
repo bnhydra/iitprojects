@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flood Forecasting | IIT Madras</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Prof. Balaji Narasimhan | IIT Madras</title>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<div id="nav-placeholder"></div>
-
-<main>
-  <section id="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content py-5">
-      <div class="row align-items-center min-vh-100">
-        <div class="col-lg-8 col-md-10" id="hero-text"></div>
-        <div class="col-lg-4 text-end d-none d-lg-block">
-          <img id="hero-logo" src="" alt="IIT Madras Logo" class="hero-logo"/>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div id="footer-placeholder"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script type="module">
-import { NAV_HTML, FOOTER_HTML, initNav, lazyLoad, revealAll } from './js/shared.js';
-document.getElementById('nav-placeholder').innerHTML = NAV_HTML;
-document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+import { initNav, revealOnScroll } from './js/shared.js';
 initNav();
 
-const d = await fetch('data/hero.json').then(r => r.json());
-document.title = `${d.title} | IIT Madras`;
-document.getElementById('hero').style.backgroundImage = `url('${d.bgImage}')`;
-document.getElementById('hero-logo').src = d.logoImage;
+const d = await fetch('data/home.json').then(r=>r.json());
+document.title = `${d.name} | IIT Madras`;
 
-const navCards = [
-  {href:'background.html', icon:'🌊', label:'Background'},
-  {href:'rtff.html',       icon:'📡', label:'RTFF & RTDAS'},
-  {href:'rht.html',        icon:'🏙', label:'HydroTwin'},
-  {href:'partners.html',   icon:'🤝', label:'Partners'},
-  {href:'reservoir.html',  icon:'💧', label:'Reservoirs'},
-  {href:'suds.html',       icon:'🌿', label:'SuDS'},
-  {href:'climate.html',    icon:'🌡', label:'Climate'},
-  {href:'gallery.html',    icon:'🖼', label:'Gallery'},
-].map(c => `<a href="${c.href}" class="nav-card"><div class="nc-icon">${c.icon}</div><div class="nc-label">${c.label}</div></a>`).join('');
+document.getElementById('hero').innerHTML = `
+<div class="container">
+  <div class="hero-inner">
+    <img src="${d.photo}" alt="${d.name}" class="hero-photo" onerror="this.outerHTML='<div class=hero-photo-placeholder>👤</div>'"/>
+    <div>
+      <h1>${d.name}</h1>
+      <p class="role">${d.role}</p>
+      <p class="bio">${d.bio}</p>
+      <div class="hero-btns">
+        <a href="${d.ctaPrimary.href}" class="btn-primary">${d.ctaPrimary.label}</a>
+        <a href="${d.ctaSecondary.href}" class="btn-outline">${d.ctaSecondary.label}</a>
+      </div>
+    </div>
+  </div>
+  <div class="highlights">
+    ${d.highlights.map(h=>`
+    <a href="research.html" class="hl-card">
+      <div class="hl-icon">${h.icon}</div>
+      <h4>${h.title}</h4>
+      <p>${h.desc}</p>
+    </a>`).join('')}
+  </div>
+</div>`;
 
-document.getElementById('hero-text').innerHTML = `
-  <p class="hero-subtitle mb-2">${d.tagline}</p>
-  <h1 class="hero-title mb-3">${d.title}</h1>
-  <p class="hero-advisor">👤 <strong>Advisor:</strong> ${d.advisor}</p>
-  <p class="hero-team">👥 ${d.team.join(' &bull; ')}</p>
-  <div class="nav-cards">${navCards}</div>`;
+const pages = [
+  {href:'research.html',     icon:'🔬', label:'Research'},
+  {href:'projects.html',     icon:'📋', label:'Sponsored Projects'},
+  {href:'teaching.html',     icon:'🎓', label:'Academic Teaching'},
+  {href:'outreach.html',     icon:'🌐', label:'Outreach'},
+  {href:'consultancy.html',  icon:'🏗', label:'Consultancy'},
+  {href:'people.html',       icon:'👥', label:'People'},
+  {href:'publications.html', icon:'📄', label:'Publications'},
+  {href:'achievements.html', icon:'🏆', label:'Achievements'},
+  {href:'joinus.html',       icon:'✉️', label:'Join our Team'},
+];
+document.getElementById('nav-section').innerHTML = `
+<div class="container section">
+  <h2 class="section-title reveal">Explore</h2>
+  <div class="nav-grid">
+    ${pages.map(p=>`<a href="${p.href}" class="reveal"><div class="ng-icon">${p.icon}</div><span>${p.label}</span></a>`).join('')}
+  </div>
+</div>`;
+
+revealOnScroll();
 </script>
+
+<section id="hero" class="hero"></section>
+<div id="nav-section"></div>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Join our Team | Prof. Balaji Narasimhan</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<script type="module">
+import { initNav, revealOnScroll } from './js/shared.js';
+initNav();
+const d = await fetch('data/joinus.json').then(r=>r.json());
+
+document.getElementById('header').innerHTML = `
+<div class="container">
+  <p class="breadcrumb"><a href="index.html">Home</a> › ${d.title}</p>
+  <h1>${d.title}</h1>
+  <p>${d.subtitle}</p>
+</div>`;
+
+document.getElementById('content').innerHTML = `
+<div class="container section">
+  ${d.openings.map(o=>`
+  <div class="join-box reveal">
+    <h3>${o.role}</h3>
+    <p><strong style="color:rgba(255,255,255,.9)">Area:</strong> ${o.area}</p>
+    <p class="req"><strong>Requirements:</strong> ${o.requirements}</p>
+    <a href="${o.apply}" class="btn-apply">Apply Now →</a>
+  </div>`).join('')}
+  <div class="clients-banner reveal">
+    <div class="label">${d.contact.label}</div>
+    <p><a href="mailto:${d.contact.email}" style="color:var(--gold)">${d.contact.email}</a></p>
+    <p style="margin-top:.4rem;font-size:.82rem;color:rgba(255,255,255,.55)">${d.contact.address}</p>
+  </div>
+</div>`;
+
+revealOnScroll();
+</script>
+<div id="header" class="page-header"></div>
+<main id="content"></main>
+</body>
+</html>

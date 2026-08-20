@@ -1,0 +1,16 @@
+{
+  "name": "Prof. Balaji Narasimhan",
+  "role": "Professor, Department of Civil Engineering | Indian Institute of Technology Madras",
+  "bio": "Hydrologist with 22+ years of experience modelling the impact of land use and climate change on hydrology using GIS, remote sensing, and hydrologic / hydraulic / crop-growth models at large river-basin scales. Lead investigator on India's flood forecasting systems and the Ganga River Basin Management Plan.",
+  "photo": "pptx_images/slide1_img40.jpg",
+  "email": "nbalaji@iitm.ac.in",
+  "url": "civil.iitm.ac.in/faculty/nbalaji",
+  "ctaPrimary": { "label": "View Research →", "href": "research.html" },
+  "ctaSecondary": { "label": "Join our Team →", "href": "joinus.html" },
+  "highlights": [
+    { "icon": "🌊", "title": "Flood Forecast", "desc": "Real Time Flood Forecasting systems for Indian cities" },
+    { "icon": "💧", "title": "Irrigation Advisory", "desc": "Neerpasanam — weather-based irrigation scheduling" },
+    { "icon": "☀️", "title": "ET Modeling", "desc": "Surface Energy Balance Models for water management" },
+    { "icon": "🏙", "title": "SuDS", "desc": "Low Impact Development for sustainable urban drainage" }
+  ]
+}

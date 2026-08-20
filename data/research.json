@@ -1,0 +1,14 @@
+{
+  "title": "Research",
+  "subtitle": "Major focus areas of the Environmental & Water Resources Engineering Laboratory",
+  "areas": [
+    { "num": 1, "title": "Rainfall Forecasting", "desc": "Ensemble & radar/satellite rainfall for hydrologic modelling" },
+    { "num": 2, "title": "Flood Forecasting", "desc": "Real-time flood forecasting systems for Indian river basins" },
+    { "num": 3, "title": "Irrigation Advisory", "desc": "Weather-based advisories for efficient irrigation scheduling" },
+    { "num": 4, "title": "Low Impact Development", "desc": "Sustainable drainage systems (SuDS) for urban flood mitigation" },
+    { "num": 5, "title": "Surface Energy Balance / ET", "desc": "Remote-sensing based ET estimation for water management" },
+    { "num": 6, "title": "Water Resources Management", "desc": "Coupled surface water – groundwater simulation" },
+    { "num": 7, "title": "Prosopis Juliflora Mapping", "desc": "Species mapping and ET flux estimation using remote sensing" },
+    { "num": 8, "title": "National Scale Projects", "desc": "Large-scale hydrological modelling across Indian river basins" }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Workshop & Training",
+  "subtitle": "Advanced training workshops conducted (20+ since 2006) — selected highlights",
+  "workshops": [
+    { "year": "2023", "title": "SWAT and HUMID Training", "org": "In collaboration with NRSC, Hyderabad · RRSC, Nagpur" },
+    { "year": "2022", "title": "SWAT and HUMID Training", "org": "In collaboration with NRSC, Hyderabad · IIT Madras" },
+    { "year": "2017", "title": "Introduction to Two-Dimensional Flow Modelling using GIS", "org": "AICTE QIP Short-Term Training Programme · IIT Madras" },
+    { "year": "2016", "title": "Hydroinformatics for Integrated Water Resources Management", "org": "Global Initiative of Academic Networks (GIAN) · IIT Madras" },
+    { "year": "2016", "title": "Introduction to SWAT using Open Source Tools: QGIS & QSWAT", "org": "QIP-STTP Programme · IIT Madras" },
+    { "year": "2015", "title": "Introductory SWAT Workshop", "org": "International SWAT-Asia IV Conference · Tsukuba, Japan" },
+    { "year": "2013–14", "title": "Introductory & Advanced SWAT Workshops", "org": "With Dr. R. Srinivasan, Texas A&M University · IIT Madras" }
+  ],
+  "summary": "20+ advanced workshops conducted since 2006 · Partners: NRSC–ISRO, Texas A&M University, AICTE, DST"
+}

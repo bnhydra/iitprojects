@@ -1,0 +1,20 @@
+{
+  "title": "People",
+  "subtitle": "Current lab members and alumni of the Environmental & Water Resources Engineering Laboratory",
+  "phdStudents": [
+    { "name": "S. Subrahmanian", "topic": "LID modules in SWAT" },
+    { "name": "A.R. Sankarbalaji", "topic": "Reservoir process modelling" },
+    { "name": "E. Duraisekaran", "topic": "Flood – SDSS operationalisation" },
+    { "name": "S.M. Kirthiga", "topic": "Ensemble weather forecasting" }
+  ],
+  "projectStaff": [
+    { "role": "Research Associate", "topic": "HUMID web platform" },
+    { "role": "Project Associate", "topic": "Chennai RTFF system" },
+    { "role": "Project Associate", "topic": "Reservoir digital twin" },
+    { "role": "GIS / Remote Sensing Analyst", "topic": "" }
+  ],
+  "alumni": [
+    { "name": "Dr. V.M. Bindhu", "position": "Faculty, Remote Sensing" },
+    { "name": "Dr. P.S. Smitha", "position": "Water resources researcher" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Consultancy",
+  "subtitle": "Major focus areas for consultancy & advisory engagements",
+  "services": [
+    {
+      "num": 1,
+      "title": "Storm Water Drain Design",
+      "desc": "Vetting & design of storm-water drainage systems — including major airport projects (Delhi, Vizag) for L&T"
+    },
+    {
+      "num": 2,
+      "title": "Real-Time Flood Forecasting",
+      "desc": "Supervisory Consultant — Spatial Decision Support System for Chennai Basins, World Bank / TNUIFSL"
+    },
+    {
+      "num": 3,
+      "title": "Low Impact Development Design",
+      "desc": "SuDS-based design projects for sustainable urban drainage and flood mitigation"
+    },
+    {
+      "num": 4,
+      "title": "Dam Safety Projects",
+      "desc": "Hydrological & structural safety assessments for dams and reservoirs"
+    }
+  ],
+  "clientsLabel": "Recent clients & partners",
+  "clients": "Larsen & Toubro (L&T)   ·   TNUIFSL / World Bank   ·   Govt. of Kerala Irrigation Dept.   ·   Tata Consulting Services   ·   RITES Ltd."
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Sponsored Projects",
+  "subtitle": "Select major sponsored research projects (full list in publications archive)",
+  "projects": [
+    {
+      "year": "2024",
+      "title": "Resilient HydroTwin — Flood Resilience through Participatory Digital Twin",
+      "funder": "DST, Govt. of India · 36 months"
+    },
+    {
+      "year": "2021",
+      "title": "Development of Web Enabled Hydrologic Modelling in SWAT (WEHMS) for India",
+      "funder": "NRSC, Hyderabad · National Hydrology Project · 36 months"
+    },
+    {
+      "year": "2018",
+      "title": "Climate change impact on water resources: coastal Godavari & Chennai basins",
+      "funder": "DST, Govt. of India · 5 years"
+    },
+    {
+      "year": "2017",
+      "title": "Climate change impact on water availability, Tamiraparani River Basin",
+      "funder": "ICAR · 2 years"
+    },
+    {
+      "year": "2016",
+      "title": "Expert system for flood forecasting & management for Chennai city",
+      "funder": "Office of the PSA, GoI (with IIT Bombay & Anna University) · 18 months"
+    },
+    {
+      "year": "2016",
+      "title": "Near-Real-Time Hydrological Modelling System for India (SWAT ensembles)",
+      "funder": "NRSC, Hyderabad · 36 months"
+    },
+    {
+      "year": "2010",
+      "title": "Ganga River Basin Management Plan (GRBMP) — a Pan-IIT project",
+      "funder": "Ministry of Environment & Forests · 5 years"
+    }
+  ]
+}

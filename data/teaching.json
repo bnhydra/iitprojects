@@ -1,0 +1,20 @@
+{
+  "title": "Academic Teaching",
+  "subtitle": "Courses taught at IIT Madras, Department of Civil Engineering",
+  "undergraduate": [
+    "CE2080 — Surveying",
+    "CE2100 — Surveying Lab",
+    "CE3030 — Water Resources Engineering",
+    "CE4030 — Hydraulic & Environmental Engineering Lab",
+    "CE4420 — Introduction to GIS and Remote Sensing",
+    "CE4610 — Water Management"
+  ],
+  "graduate": [
+    "CE5080 — Geographical Information System",
+    "CE5500 — Hydrosystems Computational Laboratory",
+    "CE5510 — Irrigation Technology",
+    "CE5960 — Remote Sensing of Earth Resources",
+    "CE5550 — Urban Hydrology & Storm Drainage Design and Management"
+  ],
+  "note": "Core faculty — Hydrology & Hydraulic Design of Bridges, PG Diploma Program in Bridge Engineering"
+}

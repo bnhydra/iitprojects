@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Outreach | Prof. Balaji Narasimhan</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<script type="module">
+import { initNav, revealOnScroll } from './js/shared.js';
+initNav();
+const d = await fetch('data/outreach.json').then(r=>r.json());
+
+document.getElementById('header').innerHTML = `
+<div class="container">
+  <p class="breadcrumb"><a href="index.html">Home</a> › ${d.title}</p>
+  <h1>${d.title}</h1>
+  <p>${d.subtitle}</p>
+</div>`;
+
+document.getElementById('content').innerHTML = `
+<div class="container section">
+  <div class="timeline">
+    ${d.workshops.map(w=>`
+    <div class="tl-item reveal">
+      <div class="tl-year">${w.year}</div>
+      <div class="tl-body">
+        <h3>${w.title}</h3>
+        <p>${w.org}</p>
+      </div>
+    </div>`).join('')}
+  </div>
+  <div class="clients-banner reveal">
+    <p style="color:rgba(255,255,255,.85);font-size:.9rem">📊 ${d.summary}</p>
+  </div>
+</div>`;
+
+revealOnScroll();
+</script>
+<div id="header" class="page-header"></div>
+<main id="content"></main>
+</body>
+</html>

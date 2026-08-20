@@ -1,0 +1,36 @@
+{
+  "title": "Publications",
+  "subtitle": "Peer-reviewed journals, conference papers, and technical reports",
+  "stats": [
+    { "label": "Journal Articles", "value": "50+" },
+    { "label": "Conference Papers", "value": "80+" },
+    { "label": "Citations", "value": "2000+" },
+    { "label": "h-index", "value": "22" }
+  ],
+  "selected": [
+    {
+      "title": "Real-time flood forecasting using ensemble rainfall forecasts and real-time data assimilation",
+      "authors": "Narasimhan B., et al.",
+      "journal": "Journal of Hydrology",
+      "year": "2023"
+    },
+    {
+      "title": "Modelling low impact development for sustainable urban drainage in Indian cities",
+      "authors": "Subrahmanian S., Narasimhan B.",
+      "journal": "Urban Water Journal",
+      "year": "2022"
+    },
+    {
+      "title": "Assessment of climate change impacts on water resources of Tamiraparani River Basin",
+      "authors": "Narasimhan B., et al.",
+      "journal": "Hydrological Processes",
+      "year": "2020"
+    },
+    {
+      "title": "Ganga River Basin Management Plan — hydrological assessment",
+      "authors": "Pan-IIT Team, Narasimhan B. (contributor)",
+      "journal": "Ministry of Environment & Forests, GoI",
+      "year": "2015"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>People | Prof. Balaji Narasimhan</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<script type="module">
+import { initNav, revealOnScroll } from './js/shared.js';
+initNav();
+const d = await fetch('data/people.json').then(r=>r.json());
+
+document.getElementById('header').innerHTML = `
+<div class="container">
+  <p class="breadcrumb"><a href="index.html">Home</a> › ${d.title}</p>
+  <h1>${d.title}</h1>
+  <p>${d.subtitle}</p>
+</div>`;
+
+const personCard = (name, sub, tag) => `
+<div class="person-card reveal">
+  <div class="person-avatar">👤</div>
+  <h4>${name}</h4>
+  <p>${sub}</p>
+  ${tag ? `<span class="tag">${tag}</span>` : ''}
+</div>`;
+
+document.getElementById('content').innerHTML = `
+<div class="container section">
+  <h2 class="section-title reveal">Current PhD Students</h2>
+  <div class="people-grid" style="margin-bottom:2.5rem">
+    ${d.phdStudents.map(p=>personCard(p.name, p.topic, 'PhD')).join('')}
+  </div>
+  <h2 class="section-title reveal">Project Staff</h2>
+  <div class="people-grid" style="margin-bottom:2.5rem">
+    ${d.projectStaff.map(p=>personCard(p.role, p.topic, 'Staff')).join('')}
+  </div>
+  <h2 class="section-title reveal">Alumni — Where They Are Now</h2>
+  <div class="people-grid">
+    ${d.alumni.map(p=>personCard(p.name, p.position, 'Alumni')).join('')}
+  </div>
+</div>`;
+
+revealOnScroll();
+</script>
+<div id="header" class="page-header"></div>
+<main id="content"></main>
+</body>
+</html>

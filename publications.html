@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Publications | Prof. Balaji Narasimhan</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<script type="module">
+import { initNav, revealOnScroll } from './js/shared.js';
+initNav();
+const d = await fetch('data/publications.json').then(r=>r.json());
+
+document.getElementById('header').innerHTML = `
+<div class="container">
+  <p class="breadcrumb"><a href="index.html">Home</a> › ${d.title}</p>
+  <h1>${d.title}</h1>
+  <p>${d.subtitle}</p>
+</div>`;
+
+document.getElementById('content').innerHTML = `
+<div class="container section">
+  <div class="cards reveal" style="margin-bottom:2.5rem">
+    ${d.stats.map(s=>`
+    <div class="card" style="text-align:center">
+      <div style="font-size:2rem;font-weight:800;color:var(--teal)">${s.value}</div>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:.3rem">${s.label}</p>
+    </div>`).join('')}
+  </div>
+  <h2 class="section-title reveal">Selected Publications</h2>
+  <div style="margin-top:1.2rem">
+    ${d.selected.map(p=>`
+    <div class="pub-item reveal">
+      <h4>${p.title}</h4>
+      <p>${p.authors}</p>
+      <p class="pub-meta">${p.journal} · ${p.year}</p>
+    </div>`).join('')}
+  </div>
+</div>`;
+
+revealOnScroll();
+</script>
+<div id="header" class="page-header"></div>
+<main id="content"></main>
+</body>
+</html>

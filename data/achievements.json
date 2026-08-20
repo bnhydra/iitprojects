@@ -1,0 +1,12 @@
+{
+  "title": "Major Achievements",
+  "subtitle": "Recognition, awards, and key milestones",
+  "achievements": [
+    { "icon": "🏆", "title": "Best Paper Award", "desc": "International SWAT Conference, 2018" },
+    { "icon": "🌐", "title": "GIAN Faculty", "desc": "Global Initiative of Academic Networks, Ministry of Education, GoI" },
+    { "icon": "💧", "title": "Neerpasanam Platform", "desc": "Operational irrigation advisory system serving farmers across Tamil Nadu" },
+    { "icon": "🌊", "title": "Chennai RTFF System", "desc": "Operational real-time flood forecasting system for Chennai metropolitan area" },
+    { "icon": "📚", "title": "GRBMP Contributor", "desc": "Lead hydrologist for the Ganga River Basin Management Plan — a Pan-IIT initiative" },
+    { "icon": "🎓", "title": "PhD Graduates", "desc": "Supervised 10+ PhD scholars in hydrology and water resources engineering" }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Join our Team",
+  "subtitle": "Open positions in the Environmental & Water Resources Engineering Laboratory",
+  "openings": [
+    {
+      "role": "PhD Research Scholar",
+      "area": "Flood Forecasting / Digital Twin / SuDS",
+      "requirements": "M.Tech / M.E. in Civil / Water Resources / Environmental Engineering. Strong background in hydrology and programming (Python/MATLAB).",
+      "apply": "mailto:nbalaji@iitm.ac.in"
+    },
+    {
+      "role": "Project Associate / Research Associate",
+      "area": "RTFF System Development & Maintenance",
+      "requirements": "B.Tech/M.Tech in Civil Engineering. Experience with GIS, hydrological modelling tools (SWAT, HEC-RAS), and web platforms.",
+      "apply": "mailto:nbalaji@iitm.ac.in"
+    },
+    {
+      "role": "Post-Doctoral Fellow",
+      "area": "Climate Change & Water Resources",
+      "requirements": "PhD in Hydrology / Water Resources / Civil Engineering. Publications in peer-reviewed journals. Experience with climate models and SWAT.",
+      "apply": "mailto:nbalaji@iitm.ac.in"
+    }
+  ],
+  "contact": {
+    "label": "Send your CV and a brief statement of interest to",
+    "email": "nbalaji@iitm.ac.in",
+    "address": "Hydraulics & Water Resources Engineering Division, Dept. of Civil Engineering, IIT Madras, Chennai 600036"
+  }
+}

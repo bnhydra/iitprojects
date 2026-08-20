@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Consultancy | Prof. Balaji Narasimhan</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<script type="module">
+import { initNav, revealOnScroll } from './js/shared.js';
+initNav();
+const d = await fetch('data/consultancy.json').then(r=>r.json());
+
+document.getElementById('header').innerHTML = `
+<div class="container">
+  <p class="breadcrumb"><a href="index.html">Home</a> › ${d.title}</p>
+  <h1>${d.title}</h1>
+  <p>${d.subtitle}</p>
+</div>`;
+
+document.getElementById('content').innerHTML = `
+<div class="container section">
+  <div class="cards">
+    ${d.services.map(s=>`
+    <div class="card reveal">
+      <div class="card-num">${s.num}</div>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+    </div>`).join('')}
+  </div>
+  <div class="clients-banner reveal">
+    <div class="label">${d.clientsLabel}</div>
+    <p>${d.clients}</p>
+  </div>
+</div>`;
+
+revealOnScroll();
+</script>
+<div id="header" class="page-header"></div>
+<main id="content"></main>
+</body>
+</html>
