@@ -8,16 +8,17 @@ html{font-size:15px;scroll-behavior:smooth}
 body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);padding-top:112px}
 
 /* HEADER */
-#site-header{position:fixed;top:0;left:0;right:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);background:linear-gradient(90deg,var(--navy) 0%,#1a4a6e 60%,var(--teal) 100%)}
+#site-header{position:fixed;top:0;left:0;right:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.22);background:linear-gradient(90deg,var(--navy) 0%,#1a4a6e 60%,var(--teal) 100%)}
 #iitm-bar{padding:.5rem 2rem;display:flex;align-items:center;gap:1.2rem}
-#iitm-bar img{height:56px;width:auto;flex-shrink:0;filter:brightness(0) invert(1)}
-.iitm-title h1{font-size:.95rem;font-weight:700;color:var(--gold);margin:0 0 .1rem}
+#iitm-bar img{height:56px;width:auto;flex-shrink:0}
+.iitm-title{flex:1;min-width:0}
+.iitm-title h1{font-size:.95rem;font-weight:700;color:var(--gold);margin:0 0 .1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .iitm-title h3{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);margin:0 0 .08rem}
 .iitm-title h3 a,.iitm-title h4 a{color:rgba(255,255,255,.75);text-decoration:none}
 .iitm-title h3 a:hover,.iitm-title h4 a:hover{color:#fff}
 .iitm-title h4{font-size:.72rem;font-weight:400;color:rgba(255,255,255,.6);margin:0}
-nav{height:56px;display:flex;align-items:center;justify-content:flex-end;padding:0 1.5rem;width:100%;position:relative;border-top:1px solid rgba(255,255,255,.12)}
-.nav-links{display:flex;gap:.25rem;flex-wrap:wrap;align-items:center}
+nav{padding:0 1.5rem;position:relative}
+.nav-links{display:flex;gap:.25rem;align-items:center;justify-content:flex-end;flex-wrap:nowrap;height:52px}
 .nav-links a{
   color:rgba(255,255,255,.82);
   font-size:1.248rem;
@@ -28,7 +29,7 @@ nav{height:56px;display:flex;align-items:center;justify-content:flex-end;padding
   position:relative;
   overflow:hidden;
   transition:color .22s;
-  letter-spacing:.01em;
+  white-space:nowrap;
 }
 .nav-links a::before{
   content:'';
@@ -42,16 +43,11 @@ nav{height:56px;display:flex;align-items:center;justify-content:flex-end;padding
   z-index:0;
 }
 .nav-links a span{position:relative;z-index:1}
-.nav-links a:hover{color:var(--navy);}
-.nav-links a:hover::before{transform:scaleY(1);}
-.nav-links a.active{
-  color:#fff;
-  background:rgba(255,255,255,.12);
-  border-bottom:2.5px solid var(--gold);
-  border-radius:6px 6px 0 0;
-}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a:hover::before{transform:scaleY(1)}
+.nav-links a.active{color:#fff;background:rgba(255,255,255,.12);border-bottom:2.5px solid var(--gold);border-radius:6px 6px 0 0}
 .nav-links a.active::before{display:none}
-.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;padding:.3rem .6rem;border-radius:4px;cursor:pointer}
+.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;padding:.3rem .7rem;border-radius:4px;cursor:pointer;font-size:1.1rem;flex-shrink:0}
 
 /* PAGE LOADER */
 #page-loader{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center}
@@ -176,14 +172,18 @@ footer a{color:var(--gold);text-decoration:none}
 
 /* RESPONSIVE */
 
-/* --- Tablet (481px – 1024px) --- */
-@media(max-width:1024px){
-  body{padding-top:104px}
-  .nav-links{gap:.1rem}
-  .nav-links a{font-size:.95rem;padding:.3rem .5rem}
+/* --- Tablet (601px – 1024px): inline nav, 50% smaller font --- */
+@media(min-width:601px) and (max-width:1024px){
+  body{padding-top:108px}
   #iitm-bar{padding:.4rem 1.2rem}
+  #iitm-bar img{height:46px}
   .iitm-title h1{font-size:.85rem}
   .iitm-title h4{display:none}
+  nav{border-top:1px solid rgba(255,255,255,.12);padding:0 .8rem}
+  .nav-links{display:flex;flex-direction:row;flex-wrap:nowrap;height:44px;gap:.05rem;justify-content:flex-end;position:static;width:auto;background:none;box-shadow:none;border:none;padding:0}
+  .nav-links a{font-size:.624rem;padding:.25rem .35rem;white-space:nowrap}
+  .nav-toggle{display:none}
+  .two-col{grid-template-columns:1fr 1fr}
   .cards{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
   .highlights{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
   .nav-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
@@ -193,39 +193,16 @@ footer a{color:var(--gold);text-decoration:none}
 
 /* --- Mobile (≤600px) --- */
 @media(max-width:600px){
-  body{padding-top:88px}
-  #iitm-bar{padding:.4rem 1rem}
-  #iitm-bar img{height:40px}
+  body{padding-top:72px}
+  #iitm-bar{padding:.35rem .8rem}
+  #iitm-bar img{height:38px}
   .iitm-title h1{font-size:.78rem}
   .iitm-title h3,.iitm-title h4{display:none}
-  nav{height:44px;padding:0 1rem;justify-content:flex-end}
-  .nav-toggle{display:block}
-  .nav-links{
-    display:none;
-    flex-direction:column;
-    position:absolute;
-    top:100%;
-    right:0;
-    width:66vw;
-    min-width:220px;
-    background:linear-gradient(160deg,var(--navy) 0%,#1a4a6e 100%);
-    border-top:1px solid rgba(255,255,255,.12);
-    border-left:1px solid rgba(255,255,255,.08);
-    border-radius:0 0 0 10px;
-    padding:.8rem .8rem;
-    gap:.15rem;
-    z-index:200;
-    box-shadow:-4px 4px 16px rgba(0,0,0,.25);
-  }
-  .nav-links.open{display:flex}
-  .nav-links a{color:rgba(255,255,255,.88);border-radius:6px;font-size:1rem;white-space:normal;padding:.5rem .8rem}
-  .nav-links a::before{display:none}
-  .nav-links a:hover{background:rgba(255,255,255,.12);color:#fff}
-  .nav-links a.active{border-bottom:none;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding-left:.65rem}
+  .nav-links{width:72vw;min-width:200px}
   .two-col{grid-template-columns:1fr}
   .hero-inner{flex-direction:column;text-align:center}
   .hero-btns{justify-content:center}
-  .hero-photo{width:110px;height:110px}
+  .hero-photo{width:100px;height:100px}
   .cards{grid-template-columns:1fr}
   .highlights{grid-template-columns:1fr 1fr}
   .nav-grid{grid-template-columns:repeat(3,1fr)}
@@ -235,4 +212,8 @@ footer a{color:var(--gold);text-decoration:none}
 }
 
 /* --- Large desktop --- */
-@media(min-width:1025px){html{font-size:16px}}
+@media(min-width:1025px){
+  html{font-size:16px}
+  body{padding-top:120px}
+  nav{border-top:1px solid rgba(255,255,255,.12)}
+}
