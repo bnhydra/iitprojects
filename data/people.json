@@ -23,8 +23,32 @@
     {
       "heading": "Alumni — Where They Are Now",
       "people": [
-        { "name": "Dr. V.M. Bindhu", "role": "Faculty",     "title": "Faculty, Remote Sensing",       "tag": "Alumni",  "photo": "images/people/bindhu.jpg" },
-        { "name": "Dr. P.S. Smitha", "role": "Researcher",  "title": "Water resources researcher",    "tag": "Alumni",  "photo": null }
+        {
+          "name": "Dr. V.M. Bindhu",
+          "role": "Faculty",
+          "title": "Faculty, Remote Sensing",
+          "tag": "Alumni",
+          "photo": "images/people/bindhu.jpg"
+        },
+        {
+          "name": "Dr. P.S. Smitha",
+          "role": "Researcher",
+          "title": "Water resources researcher",
+          "tag": "Alumni",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "heading": "IT Support",
+      "people": [
+        {
+          "name": "Vikash Raaj",
+          "role": "Software Engineer",
+          "title": "Application Development",
+          "tag": "IT Engineer",
+          "photo": "images/people/Vikash.jpg"
+        }
       ]
     }
   ]

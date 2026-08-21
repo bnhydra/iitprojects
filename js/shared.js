@@ -19,7 +19,7 @@ export const NAV = `
 export const FOOTER = `
 <footer>
   <div class="container">
-    <span>© 2025 Prof. Balaji Narasimhan · Dept. of Civil Engineering, IIT Madras</span>
+    <span>© <span id="footer-year">2026</span> Prof. Balaji Narasimhan · Dept. of Civil Engineering, IIT Madras</span>
     <span><a href="index.html">Home</a> · <a href="mailto:nbalaji@iitm.ac.in">nbalaji@iitm.ac.in</a></span>
   </div>
 </footer>`;
@@ -27,6 +27,9 @@ export const FOOTER = `
 export function initNav() {
   document.body.insertAdjacentHTML('afterbegin', NAV);
   document.body.insertAdjacentHTML('beforeend', FOOTER);
+  const y = new Date().getFullYear();
+  const el = document.getElementById('footer-year');
+  if (el && y !== 2026) el.textContent = y;
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('nav .nav-links a').forEach(a => {
     if (a.getAttribute('href') === page) a.classList.add('active');

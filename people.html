@@ -22,11 +22,12 @@ document.getElementById('header').innerHTML = `
 
 const FALLBACK = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%231C7293'/%3E%3Ccircle cx='40' cy='30' r='16' fill='rgba(255,255,255,.7)'/%3E%3Cellipse cx='40' cy='72' rx='24' ry='18' fill='rgba(255,255,255,.7)'/%3E%3C/svg%3E`;
 
+const FALLBACK_ESC = FALLBACK.replace(/'/g, '&apos;');
 const personCard = (p) => {
   const src = p.photo || FALLBACK;
   return `
 <div class="person-card reveal">
-  <img src="${src}" alt="${p.name}" class="person-photo" onerror="this.src='${FALLBACK}'"/>
+  <img src="${src}" alt="${p.name}" class="person-photo" onerror="this.onerror=null;this.src='${FALLBACK_ESC}'"/>
   <h4>${p.name}</h4>
   <p class="person-role">${p.role || ''}</p>
   <p>${p.title || ''}</p>
