@@ -7,9 +7,10 @@
 </head>
 <body>
 <script type="module">
-import { initNav, revealOnScroll } from './js/shared.js';
+import { initNav, revealOnScroll, showLoader, hideLoader } from './js/shared.js';
 initNav();
-
+showLoader();
+try {
 const d = await fetch('data/home.json').then(r=>r.json());
 document.title = `${d.name} | IIT Madras`;
 
@@ -57,6 +58,11 @@ document.getElementById('nav-section').innerHTML = `
 </div>`;
 
 revealOnScroll();
+} catch(e) {
+  document.getElementById('hero').innerHTML = '<div class="container" style="padding:3rem 0;color:rgba(255,255,255,.6)">Failed to load content. Please try again.</div>';
+} finally {
+  hideLoader();
+}
 </script>
 
 <section id="hero" class="hero"></section>

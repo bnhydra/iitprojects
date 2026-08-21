@@ -33,6 +33,17 @@ export function initNav() {
   });
 }
 
+export function showLoader() {
+  const el = document.createElement('div');
+  el.id = 'page-loader';
+  el.innerHTML = '<div class="loader-spinner"></div>';
+  document.body.appendChild(el);
+}
+
+export function hideLoader() {
+  document.getElementById('page-loader')?.remove();
+}
+
 export function revealOnScroll() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });

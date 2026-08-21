@@ -7,8 +7,10 @@
 </head>
 <body>
 <script type="module">
-import { initNav, revealOnScroll } from './js/shared.js';
+import { initNav, revealOnScroll, showLoader, hideLoader } from './js/shared.js';
 initNav();
+showLoader();
+try {
 const d = await fetch('data/publications.json').then(r=>r.json());
 
 document.getElementById('header').innerHTML = `
@@ -39,6 +41,11 @@ document.getElementById('content').innerHTML = `
 </div>`;
 
 revealOnScroll();
+} catch(e) {
+  document.getElementById('content').innerHTML = '<div class="container section" style="color:var(--muted)">Failed to load content. Please try again.</div>';
+} finally {
+  hideLoader();
+}
 </script>
 <div id="header" class="page-header"></div>
 <main id="content"></main>
