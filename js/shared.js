@@ -7,8 +7,7 @@ export const NAV = `
       <h3><a href="http://civil.iitm.ac.in/" target="_blank" rel="noopener">Department of Civil Engineering</a></h3>
       <h4><a href="https://www.iitm.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Madras, Chennai-600036, Tamil Nadu, India</a></h4>
     </div>
-  </div>
-  <nav>
+     <nav>
     <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -21,8 +20,11 @@ export const NAV = `
       <a href="publications.html">Publications</a>
       <a href="achievements.html">Achievements</a>
       <a href="joinus.html">Join our Team</a>
+      </nav>
     </div>
-  </nav>
+  </div>
+ 
+  
 </header>`;
 
 export const FOOTER = `
