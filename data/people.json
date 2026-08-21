@@ -1,20 +1,31 @@
 {
   "title": "People",
   "subtitle": "Current lab members and alumni of the Environmental & Water Resources Engineering Laboratory",
-  "phdStudents": [
-    { "name": "S. Subrahmanian", "topic": "LID modules in SWAT" },
-    { "name": "A.R. Sankarbalaji", "topic": "Reservoir process modelling" },
-    { "name": "E. Duraisekaran", "topic": "Flood – SDSS operationalisation" },
-    { "name": "S.M. Kirthiga", "topic": "Ensemble weather forecasting" }
-  ],
-  "projectStaff": [
-    { "role": "Research Associate", "topic": "HUMID web platform" },
-    { "role": "Project Associate", "topic": "Chennai RTFF system" },
-    { "role": "Project Associate", "topic": "Reservoir digital twin" },
-    { "role": "GIS / Remote Sensing Analyst", "topic": "" }
-  ],
-  "alumni": [
-    { "name": "Dr. V.M. Bindhu", "position": "Faculty, Remote Sensing" },
-    { "name": "Dr. P.S. Smitha", "position": "Water resources researcher" }
+  "sections": [
+    {
+      "heading": "Current PhD Students",
+      "people": [
+        { "name": "S. Subrahmanian",  "role": "PhD Scholar", "title": "LID modules in SWAT",             "tag": "PhD",     "photo": "images/people/subrahmanian.jpg" },
+        { "name": "A.R. Sankarbalaji","role": "PhD Scholar", "title": "Reservoir process modelling",     "tag": "PhD",     "photo": null },
+        { "name": "E. Duraisekaran",  "role": "PhD Scholar", "title": "Flood – SDSS operationalisation",  "tag": "PhD" },
+        { "name": "S.M. Kirthiga",    "role": "PhD Scholar", "title": "Ensemble weather forecasting",    "tag": "PhD",     "photo": "images/people/kirthiga.jpg" }
+      ]
+    },
+    {
+      "heading": "Project Staff",
+      "people": [
+        { "name": "Research Associate", "role": "Research Associate", "title": "HUMID web platform",      "tag": "Staff",   "photo": null },
+        { "name": "Project Associate",  "role": "Project Associate",  "title": "Chennai RTFF system",      "tag": "Staff" },
+        { "name": "Project Associate",  "role": "Project Associate",  "title": "Reservoir digital twin",   "tag": "Staff",   "photo": "images/people/associate2.jpg" },
+        { "name": "GIS Analyst",        "role": "GIS / RS Analyst",   "title": "Remote Sensing",           "tag": "Staff",   "photo": null }
+      ]
+    },
+    {
+      "heading": "Alumni — Where They Are Now",
+      "people": [
+        { "name": "Dr. V.M. Bindhu", "role": "Faculty",     "title": "Faculty, Remote Sensing",       "tag": "Alumni",  "photo": "images/people/bindhu.jpg" },
+        { "name": "Dr. P.S. Smitha", "role": "Researcher",  "title": "Water resources researcher",    "tag": "Alumni",  "photo": null }
+      ]
+    }
   ]
 }

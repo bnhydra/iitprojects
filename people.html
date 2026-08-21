@@ -18,28 +18,27 @@ document.getElementById('header').innerHTML = `
   <p>${d.subtitle}</p>
 </div>`;
 
-const personCard = (name, sub, tag) => `
+const FALLBACK = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%231C7293'/%3E%3Ccircle cx='40' cy='30' r='16' fill='rgba(255,255,255,.7)'/%3E%3Cellipse cx='40' cy='72' rx='24' ry='18' fill='rgba(255,255,255,.7)'/%3E%3C/svg%3E`;
+
+const personCard = (p) => {
+  const src = p.photo || FALLBACK;
+  return `
 <div class="person-card reveal">
-  <div class="person-avatar">👤</div>
-  <h4>${name}</h4>
-  <p>${sub}</p>
-  ${tag ? `<span class="tag">${tag}</span>` : ''}
+  <img src="${src}" alt="${p.name}" class="person-photo" onerror="this.src='${FALLBACK}'"/>
+  <h4>${p.name}</h4>
+  <p class="person-role">${p.role || ''}</p>
+  <p>${p.title || ''}</p>
+  ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
 </div>`;
+};
 
 document.getElementById('content').innerHTML = `
 <div class="container section">
-  <h2 class="section-title reveal">Current PhD Students</h2>
+  ${d.sections.map(s => `
+  <h2 class="section-title reveal">${s.heading}</h2>
   <div class="people-grid" style="margin-bottom:2.5rem">
-    ${d.phdStudents.map(p=>personCard(p.name, p.topic, 'PhD')).join('')}
-  </div>
-  <h2 class="section-title reveal">Project Staff</h2>
-  <div class="people-grid" style="margin-bottom:2.5rem">
-    ${d.projectStaff.map(p=>personCard(p.role, p.topic, 'Staff')).join('')}
-  </div>
-  <h2 class="section-title reveal">Alumni — Where They Are Now</h2>
-  <div class="people-grid">
-    ${d.alumni.map(p=>personCard(p.name, p.position, 'Alumni')).join('')}
-  </div>
+    ${s.people.map(p => personCard(p)).join('')}
+  </div>`).join('')}
 </div>`;
 
 revealOnScroll();

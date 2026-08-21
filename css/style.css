@@ -62,7 +62,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);hei
 .people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
 .person-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center}
 .person-avatar{width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;margin:0 auto .7rem}
+.person-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;display:block;margin:0 auto .7rem;border:2px solid var(--border);background:var(--teal)}
 .person-card h4{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.person-card .person-role{font-size:.78rem;font-weight:600;color:var(--teal);margin-bottom:.1rem}
 .person-card p{font-size:.78rem;color:var(--muted)}
 .person-card .tag{display:inline-block;background:var(--bg);border:1px solid var(--border);color:var(--teal);font-size:.72rem;padding:.15rem .5rem;border-radius:20px;margin-top:.4rem}
 
