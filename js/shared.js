@@ -10,16 +10,16 @@ export const NAV = `
     <nav>
       <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="projects.html">Sponsored Projects</a>
-        <a href="teaching.html">Academic Teaching</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="consultancy.html">Consultancy</a>
-        <a href="people.html">People</a>
-        <a href="publications.html">Publications</a>
-        <a href="achievements.html">Achievements</a>
-        <a href="joinus.html">Join our Team</a>
+        <a href="index.html"><span>Home</span></a>
+        <a href="research.html"><span>Research</span></a>
+        <a href="projects.html"><span>Sponsored Projects</span></a>
+        <a href="teaching.html"><span>Academic Teaching</span></a>
+        <a href="outreach.html"><span>Outreach</span></a>
+        <a href="consultancy.html"><span>Consultancy</span></a>
+        <a href="people.html"><span>People</span></a>
+        <a href="publications.html"><span>Publications</span></a>
+        <a href="achievements.html"><span>Achievements</span></a>
+        <a href="joinus.html"><span>Join our Team</span></a>
       </div>
     </nav>
   </div>

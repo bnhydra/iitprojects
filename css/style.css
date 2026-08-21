@@ -15,11 +15,42 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--te
 .iitm-title h3{font-size:.78rem;font-weight:600;color:#333;margin:0 0 .08rem}
 .iitm-title h3 a,.iitm-title h4 a{color:#1a0dab;text-decoration:none}
 .iitm-title h4{font-size:.72rem;font-weight:400;color:#555;margin:0}
-nav{height:48px;display:flex;align-items:center;justify-content:flex-end;padding:0 2rem;width:100%;position:relative}
-.nav-links{display:flex;gap:.15rem;flex-wrap:wrap}
-.nav-links a{color:var(--navy);font-size:1.56rem;padding:.35rem .65rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
-.nav-links a:hover,.nav-links a.active{background:rgba(11,42,74,.1);color:var(--navy)}
-.nav-toggle{display:none;background:none;border:1px solid var(--navy);color:var(--navy);padding:.3rem .6rem;border-radius:4px;cursor:pointer}
+nav{height:56px;display:flex;align-items:center;justify-content:flex-end;padding:0 1.5rem;width:100%;position:relative;background:linear-gradient(90deg,var(--navy) 0%,#1a4a6e 60%,var(--teal) 100%);border-top:1px solid rgba(255,255,255,.08)}
+.nav-links{display:flex;gap:.25rem;flex-wrap:wrap;align-items:center}
+.nav-links a{
+  color:rgba(255,255,255,.82);
+  font-size:1.248rem;
+  font-weight:500;
+  padding:.38rem .8rem;
+  border-radius:6px;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition:color .22s;
+  letter-spacing:.01em;
+}
+.nav-links a::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,var(--gold) 0%,#e8b84b 100%);
+  border-radius:6px;
+  transform:scaleY(0);
+  transform-origin:bottom;
+  transition:transform .22s cubic-bezier(.4,0,.2,1);
+  z-index:0;
+}
+.nav-links a span{position:relative;z-index:1}
+.nav-links a:hover{color:var(--navy);}
+.nav-links a:hover::before{transform:scaleY(1);}
+.nav-links a.active{
+  color:#fff;
+  background:rgba(255,255,255,.12);
+  border-bottom:2.5px solid var(--gold);
+  border-radius:6px 6px 0 0;
+}
+.nav-links a.active::before{display:none}
+.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;padding:.3rem .6rem;border-radius:4px;cursor:pointer}
 
 /* PAGE LOADER */
 #page-loader{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center}
@@ -151,7 +182,10 @@ footer a{color:var(--gold);text-decoration:none}
   #iitm-bar img{height:40px}
   .iitm-title h1{font-size:.78rem}
   .iitm-title h3,.iitm-title h4{display:none}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:1rem;gap:.3rem;z-index:10}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding:.8rem 1rem;gap:.2rem;z-index:10}
+  .nav-links a{color:rgba(255,255,255,.85);border-radius:6px;font-size:.95rem;white-space:normal}
+  .nav-links a::before{display:none}
+  .nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
   footer .container{flex-direction:column;text-align:center}
