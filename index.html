@@ -4,8 +4,25 @@
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Prof. Balaji Narasimhan | IIT Madras</title>
 <link rel="stylesheet" href="css/style.css"/>
+<style>
+#iitm-header{background:#fff;border-bottom:1px solid #dce6ef;padding:.6rem 2rem;display:flex;align-items:center;gap:1.2rem}
+#iitm-header img{height:64px;width:auto;flex-shrink:0}
+#iitm-header .iitm-title h1{font-size:1rem;font-weight:700;color:#741812;margin:0 0 .15rem}
+#iitm-header .iitm-title h3{font-size:.8rem;font-weight:600;color:#333;margin:0 0 .1rem}
+#iitm-header .iitm-title h3 a,#iitm-header .iitm-title h4 a{color:#1a0dab;text-decoration:none}
+#iitm-header .iitm-title h4{font-size:.75rem;font-weight:400;color:#555;margin:0}
+@media(max-width:600px){#iitm-header{padding:.5rem 1rem}#iitm-header img{height:48px}#iitm-header .iitm-title h1{font-size:.85rem}}
+</style>
 </head>
 <body>
+<div id="iitm-header">
+  <img src="images/Logo.png" alt="IIT Madras" onerror="this.style.display='none'"/>
+  <div class="iitm-title">
+    <h1>Hydraulics and Water Resources Engineering (HWRE) Group</h1>
+    <h3><a href="http://civil.iitm.ac.in/" target="_blank" rel="noopener">Department of Civil Engineering</a></h3>
+    <h4><a href="https://www.iitm.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Madras, Chennai-600036, Tamil Nadu, India</a></h4>
+  </div>
+</div>
 <script type="module">
 import { initNav, revealOnScroll, showLoader, hideLoader } from './js/shared.js';
 initNav();
