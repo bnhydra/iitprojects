@@ -7,9 +7,6 @@ export const NAV = `
       <h3><a href="http://civil.iitm.ac.in/" target="_blank" rel="noopener">Department of Civil Engineering</a></h3>
       <h4><a href="https://www.iitm.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Madras, Chennai-600036, Tamil Nadu, India</a></h4>
     </div>
-    <button class="nav-toggle" onclick="document.getElementById('main-nav-links').classList.toggle('open')">☰</button>
-  </div>
-  <nav>
     <div class="nav-links" id="main-nav-links">
       <a href="index.html"><span>Home</span></a>
       <a href="research.html"><span>Research</span></a>
@@ -22,7 +19,8 @@ export const NAV = `
       <a href="achievements.html"><span>Achievements</span></a>
       <a href="joinus.html"><span>Join our Team</span></a>
     </div>
-  </nav>
+    <button class="nav-toggle" onclick="document.getElementById('main-nav-links').classList.toggle('open')">☰</button>
+  </div>
 </header>`;
 
 export const FOOTER = `
