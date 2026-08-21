@@ -5,12 +5,17 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:15px;scroll-behavior:smooth}
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);padding-top:64px}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);padding-top:112px}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);height:64px;display:flex;align-items:center;padding:0 2rem;gap:1rem;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-.nav-brand{color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;white-space:nowrap;line-height:1.2}
-.nav-brand span{display:block;font-size:.7rem;font-weight:400;color:rgba(255,255,255,.6);letter-spacing:.5px}
+/* HEADER */
+#site-header{position:fixed;top:0;left:0;right:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+#iitm-bar{background:#fff;border-bottom:1px solid #dce6ef;padding:.5rem 2rem;display:flex;align-items:center;gap:1.2rem}
+#iitm-bar img{height:56px;width:auto;flex-shrink:0}
+.iitm-title h1{font-size:.95rem;font-weight:700;color:#741812;margin:0 0 .1rem}
+.iitm-title h3{font-size:.78rem;font-weight:600;color:#333;margin:0 0 .08rem}
+.iitm-title h3 a,.iitm-title h4 a{color:#1a0dab;text-decoration:none}
+.iitm-title h4{font-size:.72rem;font-weight:400;color:#555;margin:0}
+nav{background:var(--nav-bg);height:48px;display:flex;align-items:center;padding:0 2rem;gap:1rem}
 .nav-links{display:flex;gap:.15rem;margin-left:auto;flex-wrap:wrap}
 .nav-links a{color:rgba(255,255,255,.78);font-size:.78rem;padding:.35rem .65rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.15);color:#fff}
@@ -142,9 +147,14 @@ footer a{color:var(--gold);text-decoration:none}
   .two-col{grid-template-columns:1fr}
   .hero-inner{flex-direction:column;text-align:center}
   .hero-btns{justify-content:center}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--nav-bg);padding:1rem;gap:.3rem}
+  #iitm-bar{padding:.4rem 1rem}
+  #iitm-bar img{height:40px}
+  .iitm-title h1{font-size:.78rem}
+  .iitm-title h3,.iitm-title h4{display:none}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--nav-bg);padding:1rem;gap:.3rem}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
   footer .container{flex-direction:column;text-align:center}
+  body{padding-top:96px}
 }
 @media(min-width:769px){html{font-size:16px}}

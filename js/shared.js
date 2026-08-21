@@ -1,20 +1,29 @@
 export const NAV = `
-<nav>
-  <a class="nav-brand" href="index.html">PROF. BALAJI<span>NARASIMHAN · IIT MADRAS</span></a>
-  <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="projects.html">Sponsored Projects</a>
-    <a href="teaching.html">Academic Teaching</a>
-    <a href="outreach.html">Outreach</a>
-    <a href="consultancy.html">Consultancy</a>
-    <a href="people.html">People</a>
-    <a href="publications.html">Publications</a>
-    <a href="achievements.html">Achievements</a>
-    <a href="joinus.html">Join our Team</a>
+<header id="site-header">
+  <div id="iitm-bar">
+    <img src="images/Logo.png" alt="IIT Madras" onerror="this.style.display='none'"/>
+    <div class="iitm-title">
+      <h1>Hydraulics and Water Resources Engineering (HWRE) Group</h1>
+      <h3><a href="http://civil.iitm.ac.in/" target="_blank" rel="noopener">Department of Civil Engineering</a></h3>
+      <h4><a href="https://www.iitm.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Madras, Chennai-600036, Tamil Nadu, India</a></h4>
+    </div>
   </div>
-</nav>`;
+  <nav>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="projects.html">Sponsored Projects</a>
+      <a href="teaching.html">Academic Teaching</a>
+      <a href="outreach.html">Outreach</a>
+      <a href="consultancy.html">Consultancy</a>
+      <a href="people.html">People</a>
+      <a href="publications.html">Publications</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="joinus.html">Join our Team</a>
+    </div>
+  </nav>
+</header>`;
 
 export const FOOTER = `
 <footer>
@@ -31,7 +40,7 @@ export function initNav() {
   const el = document.getElementById('footer-year');
   if (el && y !== 2026) el.textContent = y;
   const page = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('nav .nav-links a').forEach(a => {
+  document.querySelectorAll('#site-header .nav-links a').forEach(a => {
     if (a.getAttribute('href') === page) a.classList.add('active');
   });
 }
