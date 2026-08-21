@@ -15,11 +15,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--te
 .iitm-title h3{font-size:.78rem;font-weight:600;color:#333;margin:0 0 .08rem}
 .iitm-title h3 a,.iitm-title h4 a{color:#1a0dab;text-decoration:none}
 .iitm-title h4{font-size:.72rem;font-weight:400;color:#555;margin:0}
-nav{background:var(--nav-bg);height:48px;display:flex;align-items:center;justify-content:flex-end;padding:0 2rem;width:100%;position:relative}
+nav{height:48px;display:flex;align-items:center;justify-content:flex-end;padding:0 2rem;width:100%;position:relative}
 .nav-links{display:flex;gap:.15rem;flex-wrap:wrap}
-.nav-links a{color:rgba(255,255,255,.78);font-size:.78rem;padding:.35rem .65rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
-.nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.15);color:#fff}
-.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;padding:.3rem .6rem;border-radius:4px;cursor:pointer}
+.nav-links a{color:var(--navy);font-size:1.56rem;padding:.35rem .65rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{background:rgba(11,42,74,.1);color:var(--navy)}
+.nav-toggle{display:none;background:none;border:1px solid var(--navy);color:var(--navy);padding:.3rem .6rem;border-radius:4px;cursor:pointer}
 
 /* PAGE LOADER */
 #page-loader{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center}
@@ -151,7 +151,7 @@ footer a{color:var(--gold);text-decoration:none}
   #iitm-bar img{height:40px}
   .iitm-title h1{font-size:.78rem}
   .iitm-title h3,.iitm-title h4{display:none}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--nav-bg);padding:1rem;gap:.3rem}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:1rem;gap:.3rem;z-index:10}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
   footer .container{flex-direction:column;text-align:center}
