@@ -20,18 +20,20 @@ document.getElementById('header').innerHTML = `
   <p>${d.subtitle}</p>
 </div>`;
 
-const FALLBACK = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%231C7293'/%3E%3Ccircle cx='40' cy='30' r='16' fill='rgba(255,255,255,.7)'/%3E%3Cellipse cx='40' cy='72' rx='24' ry='18' fill='rgba(255,255,255,.7)'/%3E%3C/svg%3E`;
-
-const FALLBACK_ESC = FALLBACK.replace(/'/g, '&apos;');
+const FALLBACK = 'images/people/Default.jpg';
+const FALLBACK_ESC = FALLBACK;
 const personCard = (p) => {
   const src = p.photo || FALLBACK;
+  const pData = encodeURIComponent(JSON.stringify({name:p.name,role:p.role,photo:p.photo||''}));
+  const clickable = p.profile ? `data-profile="${p.profile}" data-person="${pData}" style="cursor:pointer"` : '';
   return `
-<div class="person-card reveal">
+<div class="person-card reveal" ${clickable}>
   <img src="${src}" alt="${p.name}" class="person-photo" onerror="this.onerror=null;this.src='${FALLBACK_ESC}'"/>
   <h4>${p.name}</h4>
   <p class="person-role">${p.role || ''}</p>
   <p>${p.title || ''}</p>
   ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+  ${p.profile ? '<span class="profile-hint">View Profile ›</span>' : ''}
 </div>`;
 };
 
@@ -45,6 +47,59 @@ document.getElementById('content').innerHTML = `
 </div>`;
 
 revealOnScroll();
+
+// Modal logic
+document.getElementById('content').addEventListener('click', async e => {
+  const card = e.target.closest('[data-profile]');
+  if (!card) return;
+  const modal = document.getElementById('profile-modal');
+  const body  = document.getElementById('modal-body');
+  body.innerHTML = '<p style="color:var(--muted)">Loading…</p>';
+  modal.classList.add('open');
+  const person = JSON.parse(decodeURIComponent(card.dataset.person));
+  try {
+    const pd = await fetch(`data/People/${card.dataset.profile}`).then(r => { if(!r.ok) throw new Error(); return r.json(); });
+    body.innerHTML = renderProfile(person, pd, FALLBACK_ESC);
+  } catch {
+    body.innerHTML = '<p style="color:var(--muted)">Profile data unavailable.</p>';
+  }
+});
+
+document.getElementById('profile-modal').addEventListener('click', e => { if(e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
+
+function renderProfile(person, pd, fallback) {
+  const avatarSrc = person.photo || fallback;
+  const avatar = `<img src="${avatarSrc}" alt="${person.name}" class="pm-avatar" onerror="this.onerror=null;this.src='${fallback}'"/>`;
+  const FIG_FALLBACK = 'images/PeopleProject/Default.jpg';
+  const fig = pd.figure
+    ? `<img src="${pd.figure}" alt="${pd.figureCaption||'Research figure'}" class="pm-figure-img" onerror="this.onerror=null;this.src='${FIG_FALLBACK}'"/>`
+    : `<img src="${FIG_FALLBACK}" alt="Research figure" class="pm-figure-img"/>`;
+  return `
+<div class="pm-header">
+  <div class="pm-header-left">
+    ${avatar}
+    <div>
+      <div class="pm-name">${person.name}</div>
+      <div class="pm-role">${person.role||''}</div>
+    </div>
+  </div>
+  <button class="pm-close" onclick="document.getElementById('profile-modal').classList.remove('open')" aria-label="Close">&times;</button>
+</div>
+<div class="pm-body">
+  <div class="pm-left">
+    ${pd.researchArea ? `<div class="pm-pill"><span class="pm-pill-label">Research Area:</span> ${pd.researchArea}</div>` : ''}
+    <div class="pm-section-label">RESEARCH SUMMARY</div>
+    <p class="pm-summary">${pd.summary||''}</p>
+  </div>
+  <div class="pm-right">
+    <div class="pm-figure-block">
+      ${fig}
+      ${pd.figureCaption ? `<p class="pm-figure-caption">${pd.figureCaption}</p>` : ''}
+    </div>
+  </div>
+</div>`;
+}
+
 } catch(e) {
   document.getElementById('content').innerHTML = '<div class="container section" style="color:var(--muted)">Failed to load content. Please try again.</div>';
 } finally {
@@ -53,5 +108,11 @@ revealOnScroll();
 </script>
 <div id="header" class="page-header"></div>
 <main id="content"></main>
+
+<div id="profile-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div id="modal-body"></div>
+  </div>
+</div>
 </body>
 </html>

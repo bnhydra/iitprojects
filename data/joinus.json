@@ -25,5 +25,11 @@
     "label": "Send your CV and a brief statement of interest to",
     "email": "nbalaji@iitm.ac.in",
     "address": "Hydraulics & Water Resources Engineering Division, Dept. of Civil Engineering, IIT Madras, Chennai 600036"
+  },
+  "location": {
+    "room": "Room no: 150, NAC – 2",
+    "division": "Hydraulics and Water Resource Engineering",
+    "institute": "IIT Madras, Chennai 600036, India.",
+    "mapLink": "https://maps.app.goo.gl/QziCqCpTi7QFh6pM8"
   }
 }

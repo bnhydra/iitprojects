@@ -23,12 +23,12 @@ document.getElementById('header').innerHTML = `
 document.getElementById('content').innerHTML = `
 <div class="container section">
   <div class="cards">
-    ${d.areas.map(a=>`
-    <div class="card reveal">
-      <div class="card-num">${a.num}</div>
-      <h3>${a.title}</h3>
-      <p>${a.desc}</p>
-    </div>`).join('')}
+    ${d.areas.map(a=>{
+      const inner = `<div class="card-num">${a.num}</div><h3>${a.title}</h3><p>${a.desc}</p>`;
+      return a.targetLink
+        ? `<a class="card card-link reveal" href="${a.targetLink}" target="_blank" rel="noopener">${inner}</a>`
+        : `<div class="card reveal">${inner}</div>`;
+    }).join('')}
   </div>
 </div>`;
 

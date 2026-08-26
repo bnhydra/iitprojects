@@ -18,6 +18,7 @@ document.getElementById('header').innerHTML = `
   <p class="breadcrumb"><a href="index.html">Home</a> › ${d.title}</p>
   <h1>${d.title}</h1>
   <p>${d.subtitle}</p>
+  ${d.profileLinks ? `<div class="pub-profile-links">${d.profileLinks.map(l=>`<a href="${l.url}" target="_blank" rel="noopener" title="${l.label}"><img src="${l.image}" alt="${l.label}"/></a>`).join('')}</div>` : ''}
 </div>`;
 
 document.getElementById('content').innerHTML = `
@@ -32,11 +33,11 @@ document.getElementById('content').innerHTML = `
   <h2 class="section-title reveal">Selected Publications</h2>
   <div style="margin-top:1.2rem">
     ${d.selected.map(p=>`
-    <div class="pub-item reveal">
+    <a class="pub-item reveal${p.targetUrl ? '' : ' pub-no-link'}" ${p.targetUrl ? `href="${p.targetUrl}" target="_blank" rel="noopener"` : ''} >
       <h4>${p.title}</h4>
       <p>${p.authors}</p>
       <p class="pub-meta">${p.journal} · ${p.year}</p>
-    </div>`).join('')}
+    </a>`).join('')}
   </div>
 </div>`;
 

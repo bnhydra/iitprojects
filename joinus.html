@@ -34,6 +34,16 @@ document.getElementById('content').innerHTML = `
     <p><a href="mailto:${d.contact.email}" style="color:var(--gold)">${d.contact.email}</a></p>
     <p style="margin-top:.4rem;font-size:.82rem;color:rgba(255,255,255,.55)">${d.contact.address}</p>
   </div>
+  ${d.location ? `
+  <div class="location-box reveal">
+    <h2 class="section-title">Contact</h2>
+    <p>${d.location.room}</p>
+    <p>${d.location.division}</p>
+    <p>${d.location.institute}</p>
+    <a href="${d.location.mapLink}" target="_blank" rel="noopener" class="map-link">
+      🗺️ View on Map
+    </a>
+  </div>` : ''}
 </div>`;
 
 revealOnScroll();

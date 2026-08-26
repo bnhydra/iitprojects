@@ -1,6 +1,33 @@
 {
   "title": "Publications",
   "subtitle": "Peer-reviewed journals, conference papers, and technical reports",
+  "profileLinks": [
+    {
+      "image": "images/publications/gs.jpg",
+      "label": "Google Scholar",
+      "url": "https://scholar.google.co.in/citations?user=UHFAtUkAAAAJ"
+    },
+    {
+      "image": "images/publications/Scopus.jpg",
+      "label": "Scopus",
+      "url": "https://www.scopus.com/authid/detail.uri?authorId=13612339700"
+    },
+    {
+      "image": "images/publications/irins.jpg",
+      "label": "IRINS",
+      "url": "https://iitm.irins.org/profile/50481"
+    },
+    {
+      "image": "images/publications/ResearchGate.jpg",
+      "label": "ResearchGate",
+      "url": "https://www.researchgate.net/scientific-contributions/Balaji-Narasimhan-2153141889"
+    },
+    {
+      "image": "images/publications/orcid.jpg",
+      "label": "ORCID",
+      "url": "https://orcid.org/0000-0003-2609-9320"
+    }
+  ],
   "stats": [
     { "label": "Journal Articles", "value": "50+" },
     { "label": "Conference Papers", "value": "80+" },
@@ -12,13 +39,15 @@
       "title": "Real-time flood forecasting using ensemble rainfall forecasts and real-time data assimilation",
       "authors": "Narasimhan B., et al.",
       "journal": "Journal of Hydrology",
-      "year": "2023"
+      "year": "2023",
+      "targetUrl": "https://doi.org/10.1016/j.jhydrol.2023.example"
     },
     {
       "title": "Modelling low impact development for sustainable urban drainage in Indian cities",
       "authors": "Subrahmanian S., Narasimhan B.",
       "journal": "Urban Water Journal",
-      "year": "2022"
+      "year": "2022",
+      "targetUrl": "https://doi.org/10.1080/1573062X.2022.example"
     },
     {
       "title": "Assessment of climate change impacts on water resources of Tamiraparani River Basin",

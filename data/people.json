@@ -5,7 +5,7 @@
     {
       "heading": "Current PhD Students",
       "people": [
-        { "name": "S. Subrahmanian",  "role": "PhD Scholar", "title": "LID modules in SWAT",             "tag": "PhD",     "photo": "images/people/subrahmanian.jpg" },
+        { "name": "S. Subrahmanian",  "role": "PhD Scholar", "title": "LID modules in SWAT",             "tag": "PhD",     "photo": "images/people/subrahmanian.jpg", "profile": "subrahmanian.json" },
         { "name": "A.R. Sankarbalaji","role": "PhD Scholar", "title": "Reservoir process modelling",     "tag": "PhD",     "photo": null },
         { "name": "E. Duraisekaran",  "role": "PhD Scholar", "title": "Flood – SDSS operationalisation",  "tag": "PhD" },
         { "name": "S.M. Kirthiga",    "role": "PhD Scholar", "title": "Ensemble weather forecasting",    "tag": "PhD",     "photo": "images/people/kirthiga.jpg" }
@@ -28,7 +28,8 @@
           "role": "Faculty",
           "title": "Faculty, Remote Sensing",
           "tag": "Alumni",
-          "photo": "images/people/bindhu.jpg"
+          "photo": "images/people/bindhu.jpg",
+          "profile": "bindhu.json"
         },
         {
           "name": "Dr. P.S. Smitha",

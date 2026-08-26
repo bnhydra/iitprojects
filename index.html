@@ -38,6 +38,36 @@ document.getElementById('hero').innerHTML = `
   </div>
 </div>`;
 
+if (d.carousel?.length) {
+  document.getElementById('carousel-wrap').innerHTML = `
+<div id="carousel">
+  <div class="carousel-track" id="carousel-track">
+    ${d.carousel.map((s,i) => `
+    <div class="carousel-slide${i===0?' active':''}">
+      <img src="${s.image}" alt="Slide ${i+1}"/>
+      ${s.targetLink ? `<a href="${s.targetLink}" target="_blank" class="carousel-readmore">Visit Site</a>` : ''}
+    </div>`).join('')}
+  </div>
+  <button class="carousel-btn prev" onclick="carouselMove(-1)">&#8249;</button>
+  <button class="carousel-btn next" onclick="carouselMove(1)">&#8250;</button>
+  <div class="carousel-dots">
+    ${d.carousel.map((_,i) => `<span class="dot${i===0?' active':''}" onclick="carouselGo(${i})"></span>`).join('')}
+  </div>
+</div>`;
+  let cur = 0;
+  const slides = () => document.querySelectorAll('.carousel-slide');
+  const dots = () => document.querySelectorAll('.dot');
+  window.carouselGo = (n) => {
+    slides()[cur].classList.remove('active');
+    dots()[cur].classList.remove('active');
+    cur = (n + d.carousel.length) % d.carousel.length;
+    slides()[cur].classList.add('active');
+    dots()[cur].classList.add('active');
+  };
+  window.carouselMove = (dir) => carouselGo(cur + dir);
+  setInterval(() => carouselMove(1), 5000);
+}
+
 const pages = [
   {href:'research.html',     icon:'🔬', label:'Research'},
   {href:'projects.html',     icon:'📋', label:'Sponsored Projects'},
@@ -65,6 +95,7 @@ revealOnScroll();
 }
 </script>
 
+<div id="carousel-wrap"></div>
 <section id="hero" class="hero"></section>
 <div id="nav-section"></div>
 </body>

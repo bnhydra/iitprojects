@@ -5,34 +5,19 @@
   "photo": "images/people/Balaji.jpg",
   "email": "nbalaji@iitm.ac.in",
   "url": "civil.iitm.ac.in/faculty/nbalaji",
-  "ctaPrimary": {
-    "label": "View Research →",
-    "href": "research.html"
-  },
-  "ctaSecondary": {
-    "label": "Join our Team →",
-    "href": "joinus.html"
-  },
+  "ctaPrimary": { "label": "View Research →", "href": "research.html" },
+  "ctaSecondary": { "label": "Join our Team →", "href": "joinus.html" },
+  "carousel": [
+    { "image": "images/HomePageCarosel/Picture1.jpg", "targetLink": "research.html" },
+    { "image": "images/HomePageCarosel/Picture2.png" },
+    { "image": "images/HomePageCarosel/Picture3.jpg", "targetLink": "projects.html" },
+    { "image": "images/HomePageCarosel/Picture4.png" },
+    { "image": "images/HomePageCarosel/Picture5.png", "targetLink": "outreach.html" }
+  ],
   "highlights": [
-    {
-      "icon": "🌊",
-      "title": "Flood Forecast",
-      "desc": "Real Time Flood Forecasting systems for Indian cities"
-    },
-    {
-      "icon": "💧",
-      "title": "Irrigation Advisory",
-      "desc": "Neerpasanam — weather-based irrigation scheduling"
-    },
-    {
-      "icon": "☀️",
-      "title": "ET Modeling",
-      "desc": "Surface Energy Balance Models for water management"
-    },
-    {
-      "icon": "🏙",
-      "title": "SuDS",
-      "desc": "Low Impact Development for sustainable urban drainage"
-    }
+    { "icon": "🌊", "title": "Flood Forecast", "desc": "Real Time Flood Forecasting systems for Indian cities" },
+    { "icon": "💧", "title": "Irrigation Advisory", "desc": "Neerpasanam — weather-based irrigation scheduling" },
+    { "icon": "☀️", "title": "ET Modeling", "desc": "Surface Energy Balance Models for water management" },
+    { "icon": "🏙", "title": "SuDS", "desc": "Low Impact Development for sustainable urban drainage" }
   ]
 }
