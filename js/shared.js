@@ -1,7 +1,6 @@
 export const NAV = `
 <header id="site-header">
   <div id="iitm-bar">
-    <img src="images/Logo.png" alt="IIT Madras" onerror="this.style.display='none'"/>
     <div class="iitm-title">
       <h1>Hydraulics and Water Resources Engineering (HWRE) Group</h1>
       <h3><a href="http://civil.iitm.ac.in/" target="_blank" rel="noopener">Department of Civil Engineering</a></h3>
@@ -10,11 +9,11 @@ export const NAV = `
     <div class="nav-links" id="main-nav-links">
       <a href="index.html"><span>Home</span></a>
       <a href="research.html"><span>Research</span></a>
+      <a href="teaching.html"><span>Teaching</span></a>
       <a href="projects.html"><span>Sponsored Projects</span></a>
-      <a href="teaching.html"><span>Academic Teaching</span></a>
-      <a href="outreach.html"><span>Outreach</span></a>
       <a href="consultancy.html"><span>Consultancy</span></a>
-      <a href="people.html"><span>People</span></a>
+      <a href="outreach.html"><span>Outreach</span></a>
+      <a href="people.html"><span>Team</span></a>
       <a href="publications.html"><span>Publications</span></a>
       <a href="achievements.html"><span>Achievements</span></a>
       <a href="joinus.html"><span>Join our Team</span></a>

@@ -24,7 +24,10 @@ document.getElementById('content').innerHTML = `
 <div class="container section">
   <div class="cards">
     ${d.areas.map(a=>{
-      const inner = `<div class="card-num">${a.num}</div><h3>${a.title}</h3><p>${a.desc}</p>`;
+      const descHtml = a.descLinks
+        ? a.descLinks.map(l=>`<a class="card-desc-link" href="${l.url}" target="_blank" rel="noopener">${l.text}</a>`).join('')
+        : `<p>${a.desc}</p>`;
+      const inner = `<div class="card-num">${a.num}</div><h3>${a.title}</h3>${descHtml}`;
       return a.targetLink
         ? `<a class="card card-link reveal" href="${a.targetLink}" target="_blank" rel="noopener">${inner}</a>`
         : `<div class="card reveal">${inner}</div>`;

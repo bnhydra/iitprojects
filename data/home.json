@@ -8,11 +8,20 @@
   "ctaPrimary": { "label": "View Research →", "href": "research.html" },
   "ctaSecondary": { "label": "Join our Team →", "href": "joinus.html" },
   "carousel": [
-    { "image": "images/HomePageCarosel/Picture1.jpg", "targetLink": "research.html" },
-    { "image": "images/HomePageCarosel/Picture2.png" },
-    { "image": "images/HomePageCarosel/Picture3.jpg", "targetLink": "projects.html" },
-    { "image": "images/HomePageCarosel/Picture4.png" },
-    { "image": "images/HomePageCarosel/Picture5.png", "targetLink": "outreach.html" }
+    { "image": "images/HomePageCarosel/Picture1.jpg" },
+    {
+      "image": "images/HomePageCarosel/Picture2.png",
+      "targetLink": "https://bhuvan.nrsc.gov.in/humid/#/"
+    },
+    { "image": "images/HomePageCarosel/Picture3.jpg" },
+    {
+      "image": "images/HomePageCarosel/Picture4.png",
+      "targetLink": "https://www.idf-iitmadras.in/"
+    },
+    {
+      "image": "images/HomePageCarosel/Picture5.png",
+      "targetLink": "https://www.resilienthydrotwin.com/"
+    }
   ],
   "highlights": [
     { "icon": "🌊", "title": "Flood Forecast", "desc": "Real Time Flood Forecasting systems for Indian cities" },

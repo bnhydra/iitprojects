@@ -9,6 +9,9 @@
     { "num": 5, "title": "Surface Energy Balance / ET", "desc": "Remote-sensing based ET estimation for water management" },
     { "num": 6, "title": "Water Resources Management", "desc": "Coupled surface water – groundwater simulation" },
     { "num": 7, "title": "Prosopis Juliflora Mapping", "desc": "Species mapping and ET flux estimation using remote sensing" },
-    { "num": 8, "title": "National Scale Projects", "desc": "Large-scale hydrological modelling across Indian river basins" }
+    { "num": 8, "title": "National Scale Projects", "descLinks": [
+      { "text": "IDF curves for India", "url": "https://www.idf-iitmadras.in/" },
+      { "text": "HUMID", "url": "https://bhuvan.nrsc.gov.in/humid/#/" }
+    ]}
   ]
 }
