@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>People | Prof. Balaji Narasimhan</title>
+<title>Team | Prof. Balaji Narasimhan</title>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -11,7 +11,7 @@ import { initNav, revealOnScroll, showLoader, hideLoader } from './js/shared.js'
 initNav();
 showLoader();
 try {
-const d = await fetch('data/people.json').then(r=>r.json());
+const d = await fetch('data/team.json').then(r=>r.json());
 
 document.getElementById('header').innerHTML = `
 <div class="container">
