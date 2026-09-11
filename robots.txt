@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://civil.iitm.ac.in/faculty/nbalaji/sitemap.xml
