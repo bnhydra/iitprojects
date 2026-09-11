@@ -3,27 +3,27 @@
   "subtitle": "Peer-reviewed journals, conference papers, and technical reports",
   "profileLinks": [
     {
-      "image": "images/publications/GS.png",
+      "image": "images/Publications/GS.png",
       "label": "Google Scholar",
       "url": "https://scholar.google.co.in/citations?user=UHFAtUkAAAAJ"
     },
     {
-      "image": "images/publications/SI.png",
+      "image": "images/Publications/SI.png",
       "label": "Scopus",
       "url": "https://www.scopus.com/authid/detail.uri?authorId=13612339700"
     },
     {
-      "image": "images/publications/irins.png",
+      "image": "images/Publications/irins.png",
       "label": "IRINS",
       "url": "https://iitm.irins.org/profile/50481"
     },
     {
-      "image": "images/publications/RG.png",
+      "image": "images/Publications/RG.png",
       "label": "ResearchGate",
       "url": "https://www.researchgate.net/scientific-contributions/Balaji-Narasimhan-2153141889"
     },
     {
-      "image": "images/publications/ORCID ID.png",
+      "image": "images/Publications/ORCID ID.png",
       "label": "ORCID",
       "url": "https://orcid.org/0000-0003-2609-9320"
     }
