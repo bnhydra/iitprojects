@@ -1,8 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Prof. Balaji Narasimhan | IIT Madras</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Prof. Balaji Narasimhan | IIT Madras – Hydrology & Water Resources</title>
+<meta name="description" content="Prof. Balaji Narasimhan, Professor at IIT Madras Civil Engineering. Expert in hydrology, flood forecasting, GIS, remote sensing, and water resources engineering with 22+ years of experience."/>
+<meta name="keywords" content="Balaji Narasimhan, IIT Madras, hydrology, flood forecasting, water resources engineering, GIS, remote sensing, SWAT, SuDS, climate change, Ganga River Basin"/>
+<meta name="author" content="Prof. Balaji Narasimhan"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" id="meta-canonical"/>
+<!-- Open Graph -->
+<meta property="og:type" content="profile"/>
+<meta property="og:title" content="Prof. Balaji Narasimhan | IIT Madras – Hydrology & Water Resources"/>
+<meta property="og:description" content="Hydrologist with 22+ years of experience in flood forecasting, GIS, remote sensing, and water resources engineering at IIT Madras."/>
+<meta property="og:url" id="meta-og-url"/>
+<meta property="og:image" id="meta-og-image"/>
+<meta property="og:site_name" content="HWRE Lab – IIT Madras"/>
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Prof. Balaji Narasimhan | IIT Madras"/>
+<meta name="twitter:description" content="Hydrologist with 22+ years of experience in flood forecasting, GIS, remote sensing, and water resources engineering at IIT Madras."/>
+<meta name="twitter:image" id="meta-tw-image"/>
+<!-- Dynamic SEO: resolved at runtime so the site works on any domain/subfolder -->
+<script>
+(function(){
+  const base = location.origin + location.pathname;
+  const root = base.substring(0, base.lastIndexOf('/') + 1);
+  document.getElementById('meta-canonical').href = base;
+  document.getElementById('meta-og-url').content = base;
+  // og:image and twitter:image are updated after JSON loads (see module script)
+  window.__seoRoot = root;
+})();
+</script>
+<!-- Structured Data: injected dynamically after JSON load (see module script) -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://scholar.google.co.in"/>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -13,6 +45,24 @@ showLoader();
 try {
 const d = await fetch('data/home.json').then(r=>r.json());
 document.title = `${d.name} | IIT Madras`;
+
+// Dynamic SEO: set image tags and inject JSON-LD using runtime URL
+const _imgUrl = window.__seoRoot + d.photo;
+document.getElementById('meta-og-image').content = _imgUrl;
+document.getElementById('meta-tw-image').content = _imgUrl;
+const _ld = document.createElement('script');
+_ld.type = 'application/ld+json';
+_ld.text = JSON.stringify({
+  '@context':'https://schema.org','@type':'Person',
+  name: d.name, jobTitle:'Professor',
+  affiliation:{'@type':'CollegeOrUniversity','name':'Indian Institute of Technology Madras','url':'https://www.iitm.ac.in/'},
+  url: location.origin + location.pathname,
+  email: d.email,
+  image: _imgUrl,
+  sameAs:['https://scholar.google.co.in/citations?user=UHFAtUkAAAAJ','https://orcid.org/0000-0003-2609-9320','https://www.researchgate.net/scientific-contributions/Balaji-Narasimhan-2153141889'],
+  knowsAbout:['Hydrology','Flood Forecasting','Water Resources Engineering','GIS','Remote Sensing','SWAT','SuDS']
+});
+document.head.appendChild(_ld);
 
 document.getElementById('hero').innerHTML = `
 <div class="container">
